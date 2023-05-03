@@ -1,0 +1,43 @@
+# .bash_profile
+
+. "$HOME/.cargo/env"
+
+export PATH=$PATH:$HOME/.local/bin
+#################
+## ~/ Clean-up ##
+#################
+
+# XDG dirs
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+if test -z "${XDG_RUNTIME_DIR}"; then
+
+	export XDG_RUNTIME_DIR=/tmp/${UID}-runtime-dir
+
+	if ! test -d "${XDG_RUNTIME_DIR}"; then
+
+		mkdir "${XDG_RUNTIME_DIR}"
+
+		chmod 0700 "${XDG_RUNTIME_DIR}"
+
+	fi
+
+fi
+# Further Clean-up
+export ABDUCO_SOCKET_DIR="$XDG_RUNTIME_DIR"
+export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export LESSHISTFILE=/dev/nullp
+export HISTFILE="$XDG_DATA_HOME/history"
+
+#Cool welcome screen
+clear
+cat "$HOME/dox/ascii_art/welcomeScreen/Welcome_Computer" | lolcat
+
+if [ "$(tty)" = "/dev/tty1" ]; then
+	    startx && exit
+fi
+
+# Get the aliases and functions
+[ -f $HOME/.bashrc ] && . $HOME/.bashrc

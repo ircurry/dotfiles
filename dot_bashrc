@@ -1,0 +1,125 @@
+# .bashrc
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+##########
+#SETTINGS#
+##########
+
+# PS1='{\W} $ '
+# PS1="[\033[32m\u@\033[m\033[35m\h\033[m \033[36m\W/\033[m]$ "
+# PS1='[\u \W]\$ '
+PS1="\[\e[1;33m\][\[\e[m\]\[\e[1;33m\]\u\[\e[m\]\[\e[1;33m\]]\[\e[m\]\[\e[1;36m\][\[\e[m\]\[\e[1;36m\]\w\[\e[m\]\[\e[1;36m\]]\[\e[m\] \[\e[1;31m\]>\[\e[m\]\[\e[1;31m\]>\[\e[m\] "
+#original PS1='[\u@\h \W]\$'
+# Vim mode
+set -o vi
+#setting up zoxide
+eval "$(zoxide init bash --no-cmd)"
+export EDITOR="vim"
+export BROWSER="firefox"
+export FILEMANAGER="pcmanfm"
+##importing aliases
+#[ -f "$HOME/.config/shell/aliasrc" ] && source "$HOME/.config/shell/aliasrc"
+#combining 
+mkcd() {
+	mkdir -p -- "$1" &&  cd -P -- "$1"
+}
+
+ffox() {
+	wd="$HOME/.local/share/YAGS"
+	img="$(ls $wd/gifs/ | shuf -n 1)"
+	$(cp $wd/gifs/$img $wd/gif.gif)
+	firefox
+}
+
+lr() {
+	echo "$(rustup doc --book)"
+	echo "$(rustup doc --rust-by-example)"
+	echo "$(rustup doc --std)"
+}
+
+rw() {
+	dir=$PWD
+	cd $HOME/proj/code/rustlings && rustlings watch && cd $dir 
+}
+
+rand6() {
+	min=1
+	max=6
+	number=$(expr $min + $RANDOM % $max)
+	echo $number
+}
+
+#system aliases
+alias cd="__zoxide_z"
+alias icd="__zoxide_zi"
+alias cl="clear"
+alias ls='ls --color=auto'
+alias mkcd="mkcd"
+alias mv="mv -i"
+alias rm="rm -I"
+alias wget="wget --no-hsts"
+#alias xu="sudo xbps-install -u xbps && sudo xbps-install -Su && sudo xbps-remove -o && xlocate -S" 
+#alias xi="sudo xbps-install"
+alias xs="xrs"
+alias xr="sudo xbps-remove -R"
+alias zpt="zellij -l worktag"
+alias zel="zellij"
+alias zc="zuluCrypt-cli"
+alias zm="zuluMoutn-cli"
+alias vpnd="sudo protonvpn d && sleep 1.5 && pkill -RTMIN+10 dwmblocks"
+alias vpnc="sudo protonvpn c && sleep 1.5 && pkill -RTMIN+10 dwmblocks"
+alias vpnr="sudo protonvpn c -r && sleep 1.5 && pkill -RTMIN+10 dwmblocks"
+
+#shortening 
+alias emnw="emacsclient -t -a ''"
+alias YT="ytfzf -T chafa" #you might have to detach at 00939e8
+alias YTO="ytfzf -T chafa -c O"
+alias YTM="ytfzf -T chafa -t -s -m"
+alias yt="vidDownloader"
+alias z="zathura" #original: alias z="zathura --fork"
+alias am="amfora"
+alias mg="manga-cli -l -f"
+alias c="wordCompiler"
+alias t="task"
+alias scim="sc-im"
+alias ffox="ffox"
+alias lr="lr"
+alias rw="rw"
+alias remindme="less $HOME/.local/share/remindme/remindme.txt"
+alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
+alias irssi='irssi --config="$XDG_CONFIG_HOME"/irssi/config --home="$XDG_DATA_HOME"/irssi'
+
+#colourizing
+alias \
+	ls="ls -hN --color=auto --group-directories-first" \
+	grep="grep --color=auto" \
+	diff="diff --color=auto" \
+	ip="ip -color=auto"
+
+
+# ~/ Clean up:
+INPUTRC=/home/recur/.config/inputrc
+
+#variables
+if test -z "${XDG_RUNTIME_DIR}"; then
+
+	export XDG_RUNTIME_DIR=/tmp/${UID}-runtime-dir
+
+	if ! test -d "${XDG_RUNTIME_DIR}"; then
+
+		mkdir "${XDG_RUNTIME_DIR}"
+
+		chmod 0700 "${XDG_RUNTIME_DIR}"
+
+	fi
+
+fi
+export XKB_DEFAULT_LAYOUT="us"
+export VISUAL=vim
+. "$HOME/.cargo/env"
+export GPG_TTY=$(tty)
+export FZF_DEFAULT_OPTS="--color='prompt:3,pointer:3,bg+:0,fg+:6,hl:2,hl+:3:bold,header:3' --reverse --border --prompt='# '"
+gpgconf --launch gpg-agent
+ufetch
