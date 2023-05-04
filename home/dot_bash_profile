@@ -31,7 +31,7 @@ export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export LESSHISTFILE=/dev/nullp
 export HISTFILE="$XDG_DATA_HOME/history"
-export INPUTRC="${XDG_CONFIG_HOME:-$HOME/.config}/inputrc"
+export INPUTRC="${XDG_CONFIG_HOME:-$HOME/.config}/shell/inputrc"
 
 # Other options
 export EDITOR="vim"
