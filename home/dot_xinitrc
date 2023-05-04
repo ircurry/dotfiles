@@ -1,0 +1,19 @@
+xcompmgr &
+# xmodmap -e "keycode 64 = Super_R" -e "remove mod1 = Super_R" -e "add mod4 = Super_R"
+setxkbmap -option ctrl:swapcaps && setxkbmap -option ctrl:nocaps &
+sxhkd &
+~/.local/bin/ststart.sh 
+~/.fehbg 
+dwmblocks &
+emacs --daemon &
+(sleep 0.5 && alacritty --class Hometag -t Hometag -e home) &
+# (amixer set Master 50% && mpv '/home/recur/.local/share/startupsounds/Microsoft_Windows_95_Startup_Sound_[miZHa7ZC6Z0].mp3') &
+
+if [ "$(tty)" = "/dev/tty1" ]; then
+	# while type dwm >/dev/null ; do dwm && continue || break ; done
+	while true; do
+		dwm >/dev/null 2>&1
+	done
+fi
+
+exec dwm 
