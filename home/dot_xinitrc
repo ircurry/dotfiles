@@ -2,8 +2,9 @@ xcompmgr &
 # xmodmap -e "keycode 64 = Super_R" -e "remove mod1 = Super_R" -e "add mod4 = Super_R"
 setxkbmap -option ctrl:swapcaps && setxkbmap -option ctrl:nocaps &
 sxhkd &
-~/.local/bin/ststart.sh 
-~/.fehbg 
+[ -f $HOME/.Xresources ] && xrdb "$HOME/.Xresources" &
+[ -f $HOME/.fehbg ] && ~/.fehbg &
+mpd &
 dwmblocks &
 emacs --daemon &
 (sleep 0.5 && alacritty --class Hometag -t Hometag -e home) &
