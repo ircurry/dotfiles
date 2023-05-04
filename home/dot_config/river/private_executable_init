@@ -1,0 +1,73 @@
+#!/bin/sh
+
+super="Mod4"
+hyper="Mod4+Shift+Control+Mod1"
+ctrl="Control"
+alt="Mod1"
+
+# Spawn Terminal
+riverctl map normal $super+Shift Return spawn alacritty
+
+# Close window
+riverctl map normal $super+Shift C close
+
+# Exit
+riverctl map normal $hyper Q exit
+
+# fzf-run
+riverctl map normal $super R spawn dmenu-fzf-run
+
+# Spawn emacs 
+riverctl map normal $super+Shift E spawn emacs -c -a 'emacs'
+
+# Spawn browser
+riverctl map normal $super+Shift B spawn firefox-wayland
+
+# Spawn browser
+riverctl map normal $super+Shift P spawn keepassxc
+
+# Spawn Home
+riverctl map normal $super N spawn nhome
+
+# Mod+J and Mod+K to focus the next/previous view in the layout stack
+riverctl map normal $super J focus-view next
+riverctl map normal $super K focus-view previous
+
+# Mod+H and Mod+L to decrease/increase the main ratio of rivertile(1)
+riverctl map normal $super H send-layout-cmd rivertile "main-ratio -0.05"
+riverctl map normal $super L send-layout-cmd rivertile "main-ratio +0.05"
+
+# Mod+Shift+H and Mod+Shift+L to increment/decrement the main count of rivertile(1)
+riverctl map normal $super+Shift H send-layout-cmd rivertile "main-count +1"
+riverctl map normal $super+Shift L send-layout-cmd rivertile "main-count -1"
+
+#setting up tags
+for i in $(seq 1 6)
+do
+    tags=$((1 << ($i - 1)))
+
+    # Mod4+[1-6] to focus tag [0-5]
+    riverctl map normal $super $i set-focused-tags $tags
+
+    # Mod4+Shift+[1-6] to tag focused view with tag [0-5]
+    riverctl map normal $super+Shift $i set-view-tags $tags
+
+    # Mod4+Ctrl+[1-6] to toggle focus of tag [0-5]
+    riverctl map normal $super+Control $i toggle-focused-tags $tags
+
+    # Mod4+Shift+Ctrl+[1-6] to toggle tag [0-5] of focused view
+    riverctl map normal $super+Shift+Control $i toggle-view-tags $tags
+done
+
+#super+0 to focus on all tags
+all_tags=$(((1 << 32) - 1))
+riverctl map normal Mod4 0 set-focused-tags $all_tags
+riverctl map normal Mod4+Shift 0 set-view-tags $all_tags
+
+# Make certain views start floating
+riverctl float-filter-add app-id float
+riverctl float-filter-add title "popup title with spaces"
+
+#default layouts
+riverctl default-layout rivertile
+rivertile -view-padding 6 -outer-padding 6 &

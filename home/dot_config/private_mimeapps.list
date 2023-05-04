@@ -1,0 +1,10 @@
+[Default Applications]
+x-scheme-handler/sgnl=signal.desktop
+x-scheme-handler/signalcaptcha=signal.desktop
+application/pdf=org.pwmt.zathura-pdf-mupdf.desktop
+text/plain=emacsclient.desktop
+text/=emacsclient.desktop
+video/webm=mpv.desktop
+
+[Added Associations]
+application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;

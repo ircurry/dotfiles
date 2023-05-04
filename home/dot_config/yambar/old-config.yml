@@ -1,0 +1,25 @@
+bar:
+  font: Iosevka Term:size=12
+  location: top
+  height: 26
+  background: 00000066
+
+  right:
+    - clock:
+        content:
+          - string: {text: "{time}"}
+
+  left:
+    - dwl:
+        number-of-tags: 6
+        dwl-info-filename: "/home/recur/.cache/dwl/dwl_info"
+        content:
+          list:
+            items:
+              - map:
+                  conditions:
+                    selected: {string: {text: "-> {id}"}}
+                    ~empty: {string: {text: "{id}"}}
+                    urgent: {string: {text: "=> {id} <="}}
+                    # default tag
+                    id == 0: {string: {text: "{layout} {title}"}}
