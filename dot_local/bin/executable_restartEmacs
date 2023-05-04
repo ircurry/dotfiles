@@ -1,0 +1,4 @@
+#!/bin/sh
+
+pkill emacs
+emacs --daemon && emacsclient -c -a 'emacs'

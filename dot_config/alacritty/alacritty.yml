@@ -1,0 +1,33 @@
+window:
+  padding:
+    x: 4
+    y: 4
+
+  opacity: 0.8
+
+  # Window title
+  title: Alacritty
+
+  # Window class
+  class:
+    instance: Alacritty
+    general: Alacritty
+    
+# Font configuration
+font:
+  # Normal font face
+  normal:
+    family: Terminus
+
+  # Bold font face
+  bold:
+    family: Terminus
+
+    style: Bold
+
+  # size: 38 # size for laptop screen
+  size: 14 # size for desktop monitor
+
+import:
+  - ~/.config/alacritty/bindings.yml
+  - ~/.config/alacritty/colors.yml

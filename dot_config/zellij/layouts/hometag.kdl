@@ -1,0 +1,30 @@
+layout {
+    default_tab_template {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+        children
+    }
+
+    tab focus=true name="calcurse"{
+	pane command="calcurse"
+    }
+	
+    tab name="alsamixer"{
+	pane command="alsamixer"
+    }
+	
+    tab name="top"{
+	pane command="btm"
+    }
+	
+    tab name="pomodoro"{
+	pane command="timer.sh"
+    }
+	
+    tab name="ncmpcpp"{
+	pane command="ncmpcpp"
+    }
+}
+session_name "hometag"
+attach_to_session true

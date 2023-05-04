@@ -1,0 +1,11 @@
+#!/bin/sh
+
+file=$(find $HOME/dl/ -iname "pods_to_download*" | fzf)
+cat $file | xargs -I{} yt-dlp --embed-metadata -x --audio-format mp3 -f bestaudio/best -o "%(uploader)s--%(title)s--%(id)s.%(ext)s" -P $HOME/dox/audio/pod {}
+read -p "Do you want to delete the list? " yn
+case $yn in
+	y|yes) rm $file ;;
+	n|no) exit 0 ;;
+	*) echo "no proper answer given"
+	   exit 1 ;;
+esac

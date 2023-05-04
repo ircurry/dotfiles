@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# echo $1 | sed 's/piped\.kavin\.rocks/youtube\.com/g' | sed 's/piped\.video/youtube\.com/g' | ytfzf -c U
+
+if [ -z $1 ]; then
+	base=$(echo "$(xclip -o -sel c)" | grep -Eo "watch\?v=.{11}")
+	mpv "https://youtube.com/$base"
+else 
+	base=$(echo $1 | grep -Eo "watch\?v=.{11}")  
+	mpv "https://youtube.com/$base"
+fi
+
+# echo $1

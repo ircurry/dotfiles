@@ -1,0 +1,23 @@
+#!/bin/sh
+
+file=$(find $HOME/dl/ -iname "vids_to_download*" | fzf)
+lines=$(cat "$file" | wc -l)
+echo "$lines number of videos to download"
+read -p "Do you want to download the list? " yn1
+case $yn1 in
+	y|yes) echo "Downloading..." ;;
+	n|no) exit 0 ;;
+	*) echo "no proper answer given"
+	   exit 1 ;;
+esac
+cat $file | xargs -I{} yt-dlp --embed-metadata \
+		  -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/22/bestvideo+bestaudio' \
+		  -o "%(uploader)s--%(upload_date)s--%(title)s--%(id)s.%(ext)s" \
+		  -P $HOME/vid/yt/intakeVids/ {}
+read -p "Do you want to delete the list? " yn
+case $yn in
+	y|yes) rm $file ;;
+	n|no) exit 0 ;;
+	*) echo "no proper answer given"
+	   exit 1 ;;
+esac

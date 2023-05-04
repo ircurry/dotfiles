@@ -1,0 +1,23 @@
+#!/bin/sh
+
+if [ -z "$1" ]; then
+	url="$(xclip -o)"
+else 
+	url="$1"
+fi
+
+
+case $url in
+	*youtube.com/watch*) base=$(echo $url | grep -Eo "watch\?v=.{11}")
+			     yturl=$(shuf -e -n 1 "https://watch.whatever.social" "https://il.ax" "https://piped.video" "https://piped.kavin.rocks")
+			     echo "$yturl/$base" ;;
+	*youtube.com/channel*) base=$(echo $url | grep -Eo "channel/[-A-Za-z0-9_]*") 
+			       yturl=$(shuf -e -n 1 "https://watch.whatever.social" "https://il.ax" "https://piped.video" "https://piped.kavin.rocks")
+			       echo "$yturl/$base" ;;
+
+	*piped.video/watch*|*il.ax/watch*|*watch.whatever.social/watch*|*piped.kavin.rocks/watch*) base=$(echo $url | grep -Eo "watch\?v=.{11}")
+	   echo "https://www.youtube.com/$base" ;;
+   	*reddit.com*) echo $url | sed 's/www\.reddit\.com/libreddit\.kavin\.rocks/' ;; 	
+	*) echo $url
+	exit 1 ;;
+esac

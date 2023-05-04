@@ -1,0 +1,57 @@
+# colors: 
+#   primary: 
+#     background: "#110e16"
+#     foreground: "#e5e9e9"
+#   cursor: 
+#     text: CellBackground
+#     cursor: "#e5e9e9"
+#   selection: 
+#     text: CellBackground
+#     background: "#a0a3a3"
+#   normal:
+#     black: "#110e16"
+#     red: "#E19739"
+#     green: "#AF9549"
+#     yellow: "#E2A24E"
+#     blue: "#F6CF5C"
+#     magenta: "#D9C29D"
+#     cyan: "#B7DAF4"
+#     white: "#e5e9e9"
+#   bright:
+#     black: "#a0a3a3"
+#     red: "#E19739"
+#     green: "#AF9549"
+#     yellow: "#E2A24E"
+#     blue: "#F6CF5C"
+#     magenta: "#D9C29D"
+#     cyan: "#B7DAF4"
+#     white: "#e5e9e9"
+
+colors:
+  primary:
+    # hard contrast: background = '0x1d2021'
+    background: '#282828'
+    # soft contrast: background = '0x32302f'
+    foreground: '#ebdbb2'
+
+  # Normal colors
+  normal:
+    black:   '#282828'
+    red:     '#cc241d'
+    green:   '#98971a'
+    yellow:  '#d79921'
+    blue:    '#458588'
+    magenta: '#b16286'
+    cyan:    '#689d6a'
+    white:   '#a89984'
+
+  # Bright colors
+  bright:
+    black:   '#928374'
+    red:     '#fb4934'
+    green:   '#b8bb26'
+    yellow:  '#fabd2f'
+    blue:    '#83a598'
+    magenta: '#d3869b'
+    cyan:    '#8ec07c'
+    white:   '#ebdbb2'

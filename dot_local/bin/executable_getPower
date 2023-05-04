@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# pow="$(acpi | grep -o ' [0-9]\{1,3\}%')"
+# echo " [ $pow ]"
+pow=$(acpi | tail -1 | awk '{ print $4 }' | sed 's/\,//')
+stat=$(acpi | tail -1 | awk '{ print $3 }' | sed 's/\,//') 
+[ $stat = Discharging ] && echo " ^C7^[^C4^ $pow^C7^]" && exit 2 || [ $stat = Charging ] && echo " ^C7^[^C4^ $pow^C7^]" && exit 2 
+pow=$(acpi | tail -1 | awk '{ print $5 }' | sed 's/\,//') && echo " ^C7^[^C4^ $pow^C7^]"

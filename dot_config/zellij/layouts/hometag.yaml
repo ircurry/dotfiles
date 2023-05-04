@@ -1,0 +1,34 @@
+template:
+  direction: Horizontal
+  parts:
+    - direction: Vertical  # part 1
+      borderless: true
+      split_size:
+        Fixed: 1
+      run:
+        plugin:
+          location: "zellij:tab-bar"
+    - direction: Vertical # part 2
+      body: true
+
+session: 
+  name: "hometag"
+  attach: true
+
+tabs:
+  - name: "calcurse"
+    focus: true
+    run: 
+      command: { cmd: calcurse }
+  - name: "alsamixer"
+    run: 
+      command: { cmd: alsamixer }
+  - name: "htop"
+    run: 
+      command: { cmd: htop }
+  - name: "newsboat"
+    run: 
+      command: { cmd: newsboat }
+  - name: "ncmpcpp"
+    run: 
+      command: { cmd: ncmpcpp }

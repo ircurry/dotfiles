@@ -1,0 +1,2 @@
+#!/bin/sh
+sleep 0.02 && zellij -l worktag

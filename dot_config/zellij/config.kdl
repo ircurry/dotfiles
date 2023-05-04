@@ -1,0 +1,35 @@
+keybinds clear-defaults=true{
+    normal{
+        bind "Alt f" "Ctrl f" { SwitchToMode "session"; }
+        bind "Ctrl n" { GoToNextTab; }
+        bind "Ctrl b" { GoToPreviousTab; }
+        bind "Alt h" { MoveFocus "Left"; }
+        bind "Alt j" { MoveFocus "Down"; }
+        bind "Alt k" { MoveFocus "Up"; }
+        bind "Alt l" { MoveFocus "Right"; }
+        bind "Alt n" { NewPane "Down"; }
+        bind "Alt m" { NewPane "Left"; }
+        bind "Alt C" { CloseFocus; }
+        bind "Ctrl t" { NewTab; }
+        bind "Ctrl q" { Quit; }
+        bind "Alt H" { Resize "Left"; }
+        bind "Alt J" { Resize "Down"; }
+        bind "Alt K" { Resize "Up"; }
+        bind "Alt L" { Resize "Right"; }
+    }
+    session{
+	bind "Ctrl g" "Esc" "Enter" { SwitchToMode "normal"; }
+        bind "Ctrl q" { Quit; }
+	bind "n" { NewPane "Down"; }
+	bind "m" { NewPane "Left"; }
+        bind "x" { CloseFocus; }
+	bind "H" { MovePane "Left"; }
+	bind "J" { MovePane "Down"; }
+	bind "K" { MovePane "Up"; }
+	bind "L" { MovePane "Right"; }
+        bind "h" { MoveFocus "Left"; }
+        bind "j" { MoveFocus "Down"; }
+        bind "k" { MoveFocus "Up"; }
+        bind "l" { MoveFocus "Right"; }
+    }
+}

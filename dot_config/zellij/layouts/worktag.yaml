@@ -1,0 +1,22 @@
+template:
+  direction: Horizontal
+  parts:
+    - direction: Vertical  # part 1
+      borderless: true
+      split_size:
+        Fixed: 1
+      run:
+        plugin:
+          location: "zellij:tab-bar"
+    - direction: Vertical # part 2
+      body: true
+
+session: 
+  name: "worktag"
+  attach: true
+
+tabs:
+  - name: "shell"
+    focus: true
+  - name: "vim"
+  - name: "man"

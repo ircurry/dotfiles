@@ -1,0 +1,6 @@
+key_bindings:
+   - { key: V,          mods: Alt,              action: Paste                         }
+   - { key: C,          mods: Alt,              action: Copy                          } 
+   - { key: J,          mods: Alt|Control,        action: IncreaseFontSize              }
+   - { key: K,          mods: Alt|Control,        action: DecreaseFontSize              }
+   - { key: Equals,     mods: Alt|Shift,        action: ResetFontSize                 }

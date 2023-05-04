@@ -1,0 +1,19 @@
+#!/bin/sh
+
+case $1 in 
+	-r) echo "Xft.dpi: 172" | xrdb -override
+	#cat "$HOME/.config/alacritty/alacritty.yml" | sed 's/size\:\ 38/\# size\: 38/g' | sed 's/\# size\:\ 14/size\: 14/g'> $HOME/.config/alacritty/alacritty.yml
+	xrandr --output eDP1 --auto --mode 2256x1504
+	xrandr --output DP2 --off
+	xrandr --output DP2 --left-of eDP1
+	$HOME/.fehbg ;;
+	# xmodmap -e "keycode 64 = Super_R" && sleep 1 && xmodmap -e "remove mod1 =  Super_R" && sleep 1 && xmodmap -e "add mod4 = Super_R"
+
+	*) echo "Xft.dpi: 92" | xrdb -override
+	#cat "$HOME/.config/alacritty/alacritty.yml" | sed 's/size\:\ 38/\# size\: 38/g' | sed 's/\# size\:\ 14/size\: 14/g'> $HOME/.config/alacritty/alacritty.yml
+	xrandr --output eDP1 --off
+	xrandr --output DP2 --mode 1920x1080
+	xrandr --output DP2 --left-of eDP1
+	$HOME/.fehbg ;;
+	# xmodmap -e "keycode 64 = Super_R" && sleep 1 && xmodmap -e "remove mod1 =  Super_R" && sleep 1 && xmodmap -e "add mod4 = Super_R"
+esac

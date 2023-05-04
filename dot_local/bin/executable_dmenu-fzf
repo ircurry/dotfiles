@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# echo -n "$PATH" | xargs -d: -I{} -r — find -L {} -maxdepth 1 -mindepth 1 -type f -executable -printf '%P\n' 2>/dev/null | sort -u | fzf
+# progs=$(echo $PATH | sed 's/\:/\n/g' | xargs -I{} find {} -xtype f -maxdepth 1)
+# echo $progs | sed 's/ /\n/g' | fzf
+
+IFS='x' read screenWidth screenHeight < <(xdpyinfo | grep dimensions | grep -o '[0-9x]*' | head -n1)
+width=$(xdotool getactivewindow getwindowgeometry --shell | head -4 | tail -1 | sed 's/[^0-9]*//')
+height=$(xdotool getactivewindow getwindowgeometry --shell | head -5 | tail -1 | sed 's/[^0-9]*//')
+newPosX=$((screenWidth/2-width/2))
+newPosY=$((screenHeight/2-height/2))
+xdotool getactivewindow windowmove "$newPosX" "$newPosY"
+
+prog=$(echo $PATH \
+	    | sed 's/\:/\n/g' \
+	    | xargs -I{} \
+		    find -L {} -maxdepth 1 -mindepth 1 \
+		    -type f -executable \
+		    -printf '%P\n' 2>/dev/null \
+ 	    | sort -u \
+ 	    | fzf -e \
+ 		  --color='prompt:3,pointer:3,bg+:0,fg+:6,hl:2,hl+:3:bold,header:3' \
+ 		  --reverse \
+ 		  --border \
+ 		  --prompt="# " \
+ 		  --header="Programs:" \
+		  --no-info \
+ 		  --bind=btab:print-query,tab:replace-query)
+# echo $prog
+setsid -f $prog >/dev/null 2>&1

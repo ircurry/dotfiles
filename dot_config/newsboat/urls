@@ -1,0 +1,233 @@
+-----FEEDS-----
+"query:Bi-weekly YT feed:age between 0:14 and tags # \"yt\""
+"query:Monthly YT feed:age between 0:32 and tags # \"yt\""
+"query:Tech feed:age between 0:32 and tags # \"tech\" and tags # \"yt\""
+
+#######
+#BLOGS#
+#######
+-----BLOGS-----
+https://lukesmith.xyz/rss.xml "blog" "~Luke Smith's Blog"
+https://protesilaos.com/master.xml "blog"
+https://zettelkasten.de/feed.atom "blog"
+https://swindlesmccoop.xyz/rss.xml "blog" "tech"
+https://hackaday.com/blog/feed/ "blog" "tech"
+https://tutanota.com/blog/feed.xml "blog" "tech"
+https://bugswriter.com/blog/atom.xml "blog" "~Bugswriter's Blog"
+https://port19.xyz/rss.xml "blog"
+https://biasedriot.co/feed.xml "blog" "tech"
+https://erfur.github.io/feed.xml "blog" "tech"
+https://n-o-d-e.net/rss/rss.xml "blog" "tech"
+https://getimiskon.neocities.org/rss.xml "blog" "tech"
+https://woefe.com/atom.xml "blog" "tech"
+https://cyberlaw.stanford.edu/feeds/main.rss "blog" "tech" "news" "case"
+https://www.eff.org/rss/updates.xml "blog" "tech" "news" "~EFF Deeplinks"
+https://act.eff.org/action.atom "blog" "tech" "case" "~EFF Action Center"
+https://voidlinux.org/atom.xml "blog" "tech"
+https://github.com/void-linux/void-packages/commits/master.atom
+https://github.com/void-linux/xbps/commits/master.atom 
+
+
+#########
+#YOUTUBE#
+#########
+
+-----JEWTUBE-----
+#Ashely Mills
+https://www.youtube.com/feeds/videos.xml?channel_id=UCaBNA-lmg35Wfx2eh2oDkWg "yt" "tech" 
+#Asianometry
+https://www.youtube.com/feeds/videos.xml?channel_id=UC1LpsuAUaKoMzzJSEt5WImw "yt" "news"
+#Barely Sociable
+https://www.youtube.com/feeds/videos.xml?channel_id=UC9PIn6-XuRKZ5HmYeu46AIw "yt" "case"
+#Brodie Robertson
+https://www.youtube.com/feeds/videos.xml?channel_id=UCld68syR8Wi-GY_n4CaoJGA "yt" "tech"
+#Bugswriter
+https://www.youtube.com/feeds/videos.xml?channel_id=UCngn7SVujlvskHRvRKc1cTw "yt" "tech"
+#China Insights
+https://www.youtube.com/feeds/videos.xml?channel_id=UCwjvvgGX6oby5mZ3gbDe8Ug "yt" "news"
+#Chubbyemu
+https://www.youtube.com/feeds/videos.xml?channel_id=UCKOvOaJv4GK-oDqx-sj7VVg "yt"
+#club-eh | ethical hacking club
+https://www.youtube.com/feeds/videos.xml?channel_id=UCYOS4HdbhDFtrwrVbK7UqaQ "yt" "tech"
+#CodeAethetic
+https://www.youtube.com/feeds/videos.xml?channel_id=UCaSCt8s_4nfkRglWCvNSDrg "yt" "tech"
+#Coder Space
+https://www.youtube.com/feeds/videos.xml?channel_id=UCwe6kcllhainHICL1vnq41g "yt" "tech"
+#Coffeezilla
+https://www.youtube.com/feeds/videos.xml?channel_id=UCFQMnBA3CS502aghlcr0_aw "yt" "news" "case"
+#ColdFusion
+https://www.youtube.com/feeds/videos.xml?channel_id=UC4QZ_LsYcvcq7qOsOhpAX4A "yt" "news"
+#Computerphile 
+https://www.youtube.com/feeds/videos.xml?channel_id=UC9-y-6csu5WGm29I7JiwpnA "yt" "tech"
+#Creel 
+https://www.youtube.com/feeds/videos.xml?channel_id=UCq7dxy_qYNEBcHqQVCbc20w "yt" "tech"
+#CS50 
+https://www.youtube.com/feeds/videos.xml?channel_id=UCcabW7890RKJzL968QWEykA "yt" "tech"
+#Disruptv 
+https://www.youtube.com/feeds/videos.xml?channel_id=UC-7nELDbJEPF3muAzSeT74g "yt" "hist"
+#DistroTube 
+https://www.youtube.com/feeds/videos.xml?channel_id=UCVls1GmFKf6WlTraIb_IaJg "yt" "tech"
+#DIY Perks 
+https://www.youtube.com/feeds/videos.xml?channel_id=UCUQo7nzH1sXVpzL92VesANw "yt" "diy"
+#Economics Explained
+https://www.youtube.com/feeds/videos.xml?channel_id=UCZ4AMrDcNrfy3X6nsU8-rPg "yt" "news"
+#Eli the Computer Guy
+https://www.youtube.com/feeds/videos.xml?channel_id=UCD4EOyXKjfDUhCI6jlOZZYQ "yt" "tech"
+#Fireship.io
+https://www.youtube.com/feeds/videos.xml?channel_id=UCsBjURrPoezykLs9EqgamOA "yt" "tech"
+#freeCodeCamp.org
+https://www.youtube.com/feeds/videos.xml?channel_id=UC8butISFwT-Wl7EV0hUK0BQ "yt" "tech"
+#Gigguk
+https://www.youtube.com/feeds/videos.xml?channel_id=UC7dF9qfBMXrSlaaFFDvV_Yg "yt"
+#Historia Civilis
+https://www.youtube.com/feeds/videos.xml?channel_id=UCv_vLHiWVBh_FR9vbeuiY-A "yt" "hist"
+#History Matters
+https://www.youtube.com/feeds/videos.xml?channel_id=UC22BdTgxefuvUivrjesETjg "yt" "hist"
+#hochelaga
+https://www.youtube.com/feeds/videos.xml?channel_id=UCjP-MiAEn9DPvUHNyGEs7Wg "yt" "hist"
+#IH: Incognito Mode
+https://www.youtube.com/feeds/videos.xml?channel_id=UC8Q7XEy86Q7T-3kNpNjYgwA "yt"
+#Kazuo
+https://www.youtube.com/feeds/videos.xml?channel_id=UCAZypR7mV0clQLUYFA-E16w "yt"
+#Internet Historian
+https://www.youtube.com/feeds/videos.xml?channel_id=UCR1D15p_vdP3HkrH8wgjQRw "yt" "hist"
+#Junferno
+https://www.youtube.com/feeds/videos.xml?channel_id=UCRb6Mw3fJ6OFzp-cB9X29aA "yt" "tech"
+#Kris Occhipinti
+https://www.youtube.com/feeds/videos.xml?channel_id=UCf93fPKwotph47H3_KDcRyg "yt" "tech"
+#LEMMINO
+https://www.youtube.com/feeds/videos.xml?channel_id=UCRcgy6GzDeccI7dkbbBna3Q "yt"
+#Let's Get Rusty
+https://www.youtube.com/feeds/videos.xml?channel_id=UCSp-OaMpsO8K0KkOqyBl7_w "yt" "tech"
+#Louis Rossman
+https://www.youtube.com/feeds/videos.xml?channel_id=UCl2mFZoRqjw_ELax4Yisf6w "yt" "tech"
+#Low Level Learning
+https://www.youtube.com/feeds/videos.xml?channel_id=UC6biysICWOJ-C3P4Tyeggzg "yt" "tech"
+#Maritime Horrors
+https://www.youtube.com/feeds/videos.xml?channel_id=UCgmDs3shU7q1wrxBx9eE74g "yt" "hist" "case"
+#Mark Felton Productions
+https://www.youtube.com/feeds/videos.xml?channel_id=UCfCKvREB11-fxyotS1ONgww "yt" "hist"
+#Mental Outlaw
+https://www.youtube.com/feeds/videos.xml?channel_id=UC7YOGHUfC1Tb6E4pudI9STA "yt" "tech" "news"
+#MIT OpencourseWare
+https://www.youtube.com/feeds/videos.xml?channel_id=UCEBb1b_L6zDS3xTUrIALZOw "yt" "tech"
+#MrBrownCS
+https://www.youtube.com/feeds/videos.xml?channel_id=UCsBxhDfwURg-vQASN2ZeHwg "yt" "tech"
+#Nerd's lesson
+https://www.youtube.com/feeds/videos.xml?channel_id=UCyFWoLmPTgZ3BkHIKMRSV1g "yt" "tech"
+#Nexpo
+https://www.youtube.com/feeds/videos.xml?channel_id=UCpFFItkfZz1qz5PpHpqzYBw "yt" "case"
+#Nick Crowley
+https://www.youtube.com/feeds/videos.xml?channel_id=UCMX31RavkfUHJvw03RbUZnA "yt" "case"
+#NileBlue
+https://www.youtube.com/feeds/videos.xml?channel_id=UC1D3yD4wlPMico0dss264XA "yt" "diy"
+#NileRed
+https://www.youtube.com/feeds/videos.xml?channel_id=UCFhXFikryT4aFcLkLw2LBLA "yt" "diy"
+#No Boilerplate
+https://www.youtube.com/feeds/videos.xml?channel_id=UCUMwY9iS8oMyWDYIe6_RmoA "yt" "tech"
+#pinguefy
+https://www.youtube.com/feeds/videos.xml?channel_id=UC-nDNn0pKEyOGH5d0_ttqSA "yt"
+#pinguefy2
+https://www.youtube.com/feeds/videos.xml?channel_id=UCCT_lrHInEMB3hfApPnwbWQ "yt"
+#PolyMatter
+https://www.youtube.com/feeds/videos.xml?channel_id=UCgNg3vwj3xt7QOrcIDaHdFg "yt" "news"
+#Rhystic Studies
+https://www.youtube.com/feeds/videos.xml?channel_id=UC8e0Sg8TmRRFJytjEGhmVTg "yt"
+#Sam O'Nella Academy
+https://www.youtube.com/feeds/videos.xml?channel_id=UC1DTYW241WD64ah5BFWn4JA "yt"
+#Samurai Bartender
+https://www.youtube.com/feeds/videos.xml?channel_id=UCS9jbcDEOWbKBWQHsas6jow "yt"
+#Scamboli Reviews
+https://www.youtube.com/feeds/videos.xml?channel_id=UCt_oFAUph4_8P3N_Xs-FGHg "yt"
+#Sciencephile the AI
+https://www.youtube.com/feeds/videos.xml?channel_id=UC7BhHN8NyMMru2RUygnDXSg "yt"
+#Seytonic
+https://www.youtube.com/feeds/videos.xml?channel_id=UCW6xlqxSY3gGur4PkGPEUeA "yt" "tech" "news"
+#Slightly Sociable
+https://www.youtube.com/feeds/videos.xml?channel_id=UCgmI-uiLLAg--vDe7FFdekA "yt" "case"
+#SomeOrdinaryGamers
+https://www.youtube.com/feeds/videos.xml?channel_id=UCtMVHI3AJD4Qk4hcbZnI9ZQ "yt" "tech" "news" "case"
+#SsethTzeentach
+https://www.youtube.com/feeds/videos.xml?channel_id=UCD6VugMZKRhSyzWEWA9W2fg "yt"
+#Storymode
+https://www.youtube.com/feeds/videos.xml?channel_id=UCGeIjGngCkErevSNHdZYD5Q "yt"
+#SunnyV2
+#https://www.youtube.com/feeds/videos.xml?channel_id=UCuF49lP5gkkw5L8HK3H6GJg "yt"
+#System Crafters
+https://www.youtube.com/feeds/videos.xml?channel_id=UCAiiOTio8Yu69c3XnR7nQBQ "yt" "tech"
+#Organic Chem Tutor
+https://www.youtube.com/feeds/videos.xml?channel_id=UCEWpbFLzoYGPfuWUMFPSaoA "yt"
+#Tech Over Tea
+https://www.youtube.com/feeds/videos.xml?channel_id=UCBq5p-xOla8xhnrbhu8AIAg "yt" "tech" "pod"
+#The Hated One
+https://www.youtube.com/feeds/videos.xml?channel_id=UCjr2bPAyPV7t35MvcgT3W8Q "yt" "tech" "news" "case"
+#ThePrimeagen
+https://www.youtube.com/feeds/videos.xml?channel_id=UC8ENHE5xdFSwx71u3fDH5Xw "yt" "tech"
+#TheTxT
+https://www.youtube.com/feeds/videos.xml?channel_id=UC8WpmpGCcfKyT_QKS3rYMxA "yt" "tech"
+#Townsends
+https://www.youtube.com/feeds/videos.xml?channel_id=UCxr2d4As312LulcajAkKJYw "yt" "hist"
+#Upper Echelon
+https://www.youtube.com/feeds/videos.xml?channel_id=UChI0q9a-ZcbZh7dAu_-J-hg "yt" "news" "case"
+#Vsauce
+https://www.youtube.com/feeds/videos.xml?channel_id=UC6nSFpj9HTCZ5t-N3Rm3-HA "yt"
+#Wendigoon
+https://www.youtube.com/feeds/videos.xml?channel_id=UC3cpN6gcJQqcCM6mxRUo_dA "yt" "case"
+#Wendover Productions
+https://www.youtube.com/feeds/videos.xml?channel_id=UC9RM-iSvTu1uPJb8X5yp3EQ "yt" "news"
+#Zach Freedman
+https://www.youtube.com/feeds/videos.xml?channel_id=UCUW49KGPezggFi0PGyDvcvg "yt" "tech" "diy"
+
+
+########
+#REDDIT#
+########
+-----REDDIT-----
+https://www.reddit.com/r/emacs/.rss "reddit" "tech" "~r/emacs - M-x emacs-reddit"
+https://www.reddit.com/r/linux/.rss "reddit" "tech" "~r/linux - Linux, GNU/Linux, free software"
+https://www.reddit.com/r/rust/.rss "reddit" "tech" "~r/rust - The Rust Programming Language"
+https://www.reddit.com/r/unixporn/.rss "reddit" "tech"
+https://www.reddit.com/r/voidlinux/.rss "reddit" "tech" "~/r/voidlinux - The Void Distribution of GNU/Linux"
+
+
+#########
+#PODCAST#
+#########
+-----PODCASTS-----
+#Jack Rhysider
+https://www.youtube.com/feeds/videos.xml?channel_id=UCMIqrmh2lMdzhlCPK5ahsAg "pod" "tech" "yt"
+#Lex Fridman
+https://www.youtube.com/feeds/videos.xml?channel_id=UCSHZKyawb77ixDdsGog4iWA "pod" "tech" "yt"
+https://lexfridman.com/feed/podcast/ "~Lex RSS"
+#Michael Malice
+https://michaelmalice.com/category/podcast/feed "pod"
+#Trash Taste
+https://www.youtube.com/feeds/videos.xml?channel_id=UCcmxOGYGF51T1XsqQLewGtQ "pod" "yt"
+#Huberman Lab
+https://www.youtube.com/feeds/videos.xml?channel_id=UC2D2CMWXMOVWx7giW1n3LIg "pod" 
+
+
+#################
+#MAINSTREAM NEWS#
+#################
+-----MAIN-STREAM-NEWS-----
+https://www.japantimes.co.jp/feed/topstories/ "news"
+#http://feeds.bbci.co.uk/news/rss.xml?edition=us "news" "~BBC US and Ca"
+http://feeds.bbci.co.uk/news/rss.xml?edition=int "news" "~BBC World"
+https://thehill.com/news/house/feed/ "news"
+https://thehill.com/news/senate/feed/ "news"
+https://thehill.com/policy/energy-environment/feed/ "news"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC-eegKVWEgBCa4OzjnK_PtA "news"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC-uhvujip5deVcEtLxnW8qg "news"
+
+#########
+#TWITTER#
+#########
+
+
+#######
+#MANGA#
+#######
+-----MANGA-----
+https://read-one-punchman.com/feed
+https://wayofthehousehusband.com/feed

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ -z $1 ]; then
+	base=$(echo "$(xclip -o -sel c)" | grep -Eo "watch\?v=.{11}")
+	echo "https://www.youtube.com/$base" >> $HOME/dl/pods_to_download-$(date +%Y_%U).txt
+else 
+	base=$(echo $1 | grep -Eo "watch\?v=.{11}")  
+	echo "https://www.youtube.com/$base" >> $HOME/dl/pods_to_download-$(date +%Y_%U).txt
+fi

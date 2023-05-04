@@ -1,0 +1,4 @@
+visualizer_type = "spectrum"
+ncmpcpp_directory = "~/.config/ncmpcpp"
+
+mpd_music_dir = "~/music"

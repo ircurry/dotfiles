@@ -1,0 +1,3 @@
+#!/bin/sh
+
+xpkg -L | while read line; do echo "$line" && xbps-query "$line" | grep -E "repository:.*"; done

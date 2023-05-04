@@ -1,0 +1,15 @@
+
+super + s 
+	maim -u | tee $HOME/pix/ss/$(date +%Y%m%d-%s)-screenshot.png | xclip -sel clipboard -t image/png
+super + S
+	maim -u -s | tee $HOME/pix/ss/$(date +%Y%m%d-%s)-screenshot.png | xclip -sel clipboard -t image/png
+super + P
+	keepassxc
+super + B
+	firefox
+super + n
+	nhome
+super + control + l
+	slock
+super + p
+	dmenu-fzf-run
