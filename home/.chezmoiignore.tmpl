@@ -1,1 +1,3 @@
-
+{{ if (and (ne .chezmoi.os "linux") (ne .chezmoi.osRelease.name "Void")) }}
+.chezmoiscripts/void/**
+{{ end }}
