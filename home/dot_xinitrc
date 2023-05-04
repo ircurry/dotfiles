@@ -2,11 +2,11 @@ xcompmgr &
 # xmodmap -e "keycode 64 = Super_R" -e "remove mod1 = Super_R" -e "add mod4 = Super_R"
 setxkbmap -option ctrl:swapcaps && setxkbmap -option ctrl:nocaps &
 sxhkd &
-[ -f $HOME/.Xresources ] && xrdb "$HOME/.Xresources" &
-[ -f $HOME/.fehbg ] && ~/.fehbg &
 mpd &
-dwmblocks &
 emacs --daemon &
+dwmblocks &
+[ -f $HOME/.Xresources ] && xrdb "$HOME/.Xresources"
+[ -f $HOME/.fehbg ] && ~/.fehbg
 (sleep 0.5 && alacritty --class Hometag -t Hometag -e home) &
 # (amixer set Master 50% && mpv '/home/recur/.local/share/startupsounds/Microsoft_Windows_95_Startup_Sound_[miZHa7ZC6Z0].mp3') &
 
