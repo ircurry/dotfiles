@@ -37,7 +37,7 @@ export EDITOR="vim"
 export BROWSER="firefox"
 export FILEMANAGER="pcmanfm"
 export XKB_DEFAULT_LAYOUT="us"
-export VISUAL=vim
+export VISUAL="vim"
 export FZF_DEFAULT_OPTS="--color='prompt:3,pointer:3,bg+:0,fg+:6,hl:2,hl+:3:bold,header:3' --reverse --border --prompt='# '"
 
 # Cool welcome screen
