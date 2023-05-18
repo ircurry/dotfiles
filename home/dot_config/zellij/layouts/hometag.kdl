@@ -10,8 +10,8 @@ layout {
 	pane command="calcurse"
     }
 	
-    tab name="alsamixer"{
-	pane command="alsamixer"
+    tab name="pulsemixer"{
+	pane command="pulsemixer"
     }
 	
     tab name="top"{
