@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ppr="$(find $HOME/pix/wall/ | fzf)"
+ppr="$(find $HOME/pix/wall/ | sort | fzf --preview='chafa {}' --preview-window=default:right:75%)"
 choice=$(echo "Fill\nMax\nTest-Fill\nTest-Max" | fzf)
 
 find_colors() {
