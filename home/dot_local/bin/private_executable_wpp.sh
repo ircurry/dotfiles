@@ -62,23 +62,25 @@ build_zellij() {
 }
 
 case $choice in 
-	Max) echo "$(wal -n -i $ppr && feh --bg-max  $ppr)"
+	Max) echo "$(wal -s -n -i $ppr && feh --bg-max  $ppr)"
 	echo "Setting wallpaper and colors... \n"
 	echo "Xft.dpi: 172" > $HOME/.Xresources
 	cat $HOME/.cache/wal/colors.Xresources >> $HOME/.Xresources
 	xrdb '/home/recur/.Xresources'
 	find_colors
-	build_alac > $HOME/.config/alacritty/colors.yml
+	sed -i '/^colors:* /,$d' $HOME/.config/alacritty/colors.yml
+	build_alac >> $HOME/.config/alacritty/colors.yml
 	build_zellij > $HOME/.config/zellij/themes/default.kdl
 	echo "Set Wallpaper at Max\nDone :)" ;;
 
-	Fill) echo "$(wal -n -i $ppr && feh --bg-fill  $ppr)"
+	Fill) echo "$(wal -s -n -i $ppr && feh --bg-fill  $ppr)"
 	echo "Setting wallpaper and colors... \n"
 	echo "Xft.dpi: 172" > $HOME/.Xresources
 	cat $HOME/.cache/wal/colors.Xresources >> $HOME/.Xresources
 	xrdb '/home/recur/.Xresources'
 	find_colors
-	build_alac  > $HOME/.config/alacritty/colors.yml
+	sed -i '/^colors:* /,$d' $HOME/.config/alacritty/colors.yml
+	build_alac  >> $HOME/.config/alacritty/colors.yml
 	build_zellij > $HOME/.config/zellij/themes/default.kdl
 	echo "Set Wallpaper to Fill\nDone :)" ;;
 
