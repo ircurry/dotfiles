@@ -49,6 +49,8 @@ rand6() {
 	number=$(expr $min + $RANDOM % $max)
 	echo $number
 }
+# Load Aliases
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config/}/shell/aliasrc" ] && . "${XDG_CONFIG_HOME:-$HOME/.config/}/shell/aliasrc"
 
 # GPG
 export GPG_TTY=$(tty)

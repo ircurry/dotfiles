@@ -51,4 +51,3 @@ fi
 
 # Get the aliases and functions
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config/}/shell/bashrc" ] && . "${XDG_CONFIG_HOME:-$HOME/.config/}/shell/bashrc"
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config/}/shell/aliasrc" ] && . "${XDG_CONFIG_HOME:-$HOME/.config/}/shell/aliasrc"
