@@ -37,17 +37,18 @@ export GOPATH="$HOME/.local/bin/go/"
 export EDITOR="vim"
 export BROWSER="firefox"
 export FILEMANAGER="pcmanfm"
+export TERMINAL="alacritty"
 export XKB_DEFAULT_LAYOUT="us"
 export VISUAL="vim"
 export FZF_DEFAULT_OPTS="--color='prompt:3,pointer:3,bg+:0,fg+:6,hl:2,hl+:3:bold,header:3' --reverse --border --prompt='# '"
 
 # Cool welcome screen
 clear
-[ -x /bin/lolcat ] && cat "$HOME/dox/ascii_art/welcomeScreen/Welcome_Computer" | lolcat
+[ -x /bin/lolcat ] && [ -z "$HOME/dox/ascii_art/welcomeScreen/Welcome_Computer" ] && cat "$HOME/dox/ascii_art/welcomeScreen/Welcome_Computer" | lolcat
 
-if [ "$(tty)" = "/dev/tty1" ]; then
-	    startx && exit
-fi
+#if [ "$(tty)" = "/dev/tty1" ]; then
+#	    startx && exit
+#fi
 
 # Get the aliases and functions
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config/}/shell/bashrc" ] && . "${XDG_CONFIG_HOME:-$HOME/.config/}/shell/bashrc"
+[ "$(tty)" = "/dev/tty1" ] && [ -f "${XDG_CONFIG_HOME:-$HOME/.config/}/shell/bashrc" ] && . "${XDG_CONFIG_HOME:-$HOME/.config/}/shell/bashrc"
