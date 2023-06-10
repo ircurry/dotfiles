@@ -5,6 +5,9 @@ hyper="Mod4+Shift+Control+Mod1"
 ctrl="Control"
 alt="Mod1"
 
+###############
+# Normal Mode #
+###############
 # Spawn Terminal
 riverctl map normal $super+Shift Return spawn alacritty
 
@@ -15,10 +18,10 @@ riverctl map normal $super+Shift C close
 riverctl map normal $hyper Q exit
 
 # fzf-run
-riverctl map normal $super R spawn dmenu-fzf-run
+riverctl map normal $super R spawn fuzzel
 
 # Spawn emacs 
-riverctl map normal $super+Shift E spawn emacs -c -a 'emacs'
+riverctl map normal $super+Shift E spawn "emacsclient -c -a 'emacs'" && echo "pass" > ~/test.txt || echo "fail" > ~/test.txt
 
 # Spawn browser
 riverctl map normal $super+Shift B spawn firefox-wayland
@@ -38,8 +41,8 @@ riverctl map normal $super H send-layout-cmd rivertile "main-ratio -0.05"
 riverctl map normal $super L send-layout-cmd rivertile "main-ratio +0.05"
 
 # Mod+Shift+H and Mod+Shift+L to increment/decrement the main count of rivertile(1)
-riverctl map normal $super+Shift H send-layout-cmd rivertile "main-count +1"
-riverctl map normal $super+Shift L send-layout-cmd rivertile "main-count -1"
+riverctl map normal $super I send-layout-cmd rivertile "main-count +1"
+riverctl map normal $super D send-layout-cmd rivertile "main-count -1"
 
 #setting up tags
 for i in $(seq 1 6)
@@ -60,9 +63,76 @@ do
 done
 
 #super+0 to focus on all tags
-all_tags=$(((1 << 32) - 1))
+all_tags=$(((1 << 6) - 1))
 riverctl map normal Mod4 0 set-focused-tags $all_tags
 riverctl map normal Mod4+Shift 0 set-view-tags $all_tags
+
+
+###############
+# Docked Mode #
+###############
+riverctl declare-mode docked
+riverctl map normal $hyper D spawn "$XDG_CONFIG_HOME/river/dock"
+riverctl map docked $hyper D spawn "$XDG_CONFIG_HOME/river/dock -u"
+
+# Spawn Terminal
+riverctl map docked $super+Shift Return spawn alacritty
+
+# Close window
+riverctl map docked $super+Shift C close
+
+# Exit
+riverctl map docked $hyper Q exit
+
+# fzf-run
+riverctl map docked $super R spawn dmenu-fzf-run
+
+# Spawn emacs 
+riverctl map docked $super+Shift E spawn "emacsclient -c" 
+
+# Spawn browser
+riverctl map docked $super+Shift B spawn firefox-wayland
+
+# Spawn browser
+riverctl map docked $super+Shift P spawn keepassxc
+
+# Spawn Home
+riverctl map docked $super N spawn nhome
+
+# Mod+J and Mod+K to focus the next/previous view in the layout stack
+riverctl map docked $super J focus-view next
+riverctl map docked $super K focus-view previous
+
+# Mod+H and Mod+L to decrease/increase the main ratio of rivertile(1)
+riverctl map docked $super H send-layout-cmd rivertile "main-ratio -0.05"
+riverctl map docked $super L send-layout-cmd rivertile "main-ratio +0.05"
+
+# Mod+Shift+H and Mod+Shift+L to increment/decrement the main count of rivertile(1)
+riverctl map docked $super I send-layout-cmd rivertile "main-count +1"
+riverctl map docked $super D send-layout-cmd rivertile "main-count -1"
+
+#setting up tags
+for i in $(seq 1 6)
+do
+    tags=$((1 << ($i - 1)))
+
+    # Mod4+[1-6] to focus tag [0-5]
+    riverctl map docked $super $i set-focused-tags $tags
+
+    # Mod4+Shift+[1-6] to tag focused view with tag [0-5]
+    riverctl map docked $super+Shift $i set-view-tags $tags
+
+    # Mod4+Ctrl+[1-6] to toggle focus of tag [0-5]
+    riverctl map docked $super+Control $i toggle-focused-tags $tags
+
+    # Mod4+Shift+Ctrl+[1-6] to toggle tag [0-5] of focused view
+    riverctl map docked $super+Shift+Control $i toggle-view-tags $tags
+done
+
+#super+0 to focus on all tags
+all_tags=$(((1 << 6) - 1))
+riverctl map docked Mod4 0 set-focused-tags $all_tags
+riverctl map docked Mod4+Shift 0 set-view-tags $all_tags
 
 # Make certain views start floating
 riverctl float-filter-add app-id float
@@ -70,4 +140,25 @@ riverctl float-filter-add title "popup title with spaces"
 
 #default layouts
 riverctl default-layout rivertile
-rivertile -view-padding 6 -outer-padding 6 &
+rivertile -view-padding 1 -outer-padding 2 &
+
+#keyboard layout
+riverctl keyboard-layout -options ctrl:swapcaps us
+
+#yambar
+yambar-bar-controller-script
+yambar-bar-controller-script -s 
+
+#wlr-rander
+wlr-randr --output eDP-1 --scale 2
+
+#wallpaper
+if [ -d "$HOME/pix/wall/" ]; then
+	wallppr=$(find "$HOME/pix/wall/" | grep "nord" | shuf -n1)
+	swaybg -i "$wallppr" -m fill &
+else
+	swaybg -c "#3b4252"
+fi
+
+#home
+nhome

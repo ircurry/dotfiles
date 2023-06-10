@@ -1,0 +1,25 @@
+#!/bin/sh
+
+dock() {
+	if [ -n "$(wlr-randr | grep 'DP-2')" ]
+	then
+		riverctl keyboard-layout -options none us
+		riverctl enter-mode docked
+		wlr-randr --output eDP-1 --off --output DP-2 --on
+		yambar-bar-controller-script -dk
+		yambar-bar-controller-script -ds
+	fi
+}
+
+undock() {
+	wlr-randr --output DP-2 --off --output eDP-1 --on --scale 2
+	riverctl keyboard-layout -options ctrl:swapcaps us
+	riverctl enter-mode normal
+	yambar-bar-controller-script -k
+	yambar-bar-controller-script -s
+}
+
+case $1 in
+	-u) undock ;;
+	*) dock ;;
+esac

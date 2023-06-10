@@ -1,0 +1,28 @@
+#!/bin/sh
+
+start_yambar() {
+	yambar -p "$XDG_CACHE_HOME/yambar/pid" &
+}
+kill_yambar() {
+	pid=$(cat "$XDG_CACHE_HOME/yambar/pid")
+	kill "$pid"
+}
+docked_yambar() {
+	yambar -c "$XDG_CONFIG_HOME/yambar/dock-config.yml" -p "$XDG_CACHE_HOME/yambar/pid" &
+}
+
+case $1 in 
+	-k) kill_yambar
+	riverctl map normal Super B spawn 'yambar-bar-controller-script -s' ;;
+	-s) start_yambar
+	riverctl map normal Super B spawn 'yambar-bar-controller-script -k' ;;
+	-dk) kill_yambar
+	riverctl map docked Super B spawn 'yambar-bar-controller-script -ds' ;;
+	-ds) docked_yambar
+	riverctl map docked Super B spawn 'yambar-bar-controller-script -dk' ;;
+	*) if [ -f "$XDG_CACHE_HOME/yambar/pid" ]; then
+		   pid=$(cat "$XDG_CACHE_HOME/yambar/pid")
+		   [ $(ps -p $pid | grep -Eoe "yambar$") = "yambar" ] && kill "$pid"
+		   rm "$XDG_CACHE_HOME/yambar/pid"
+	   fi ;;
+esac
