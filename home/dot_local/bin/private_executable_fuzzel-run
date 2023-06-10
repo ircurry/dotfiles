@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# echo -n "$PATH" | xargs -d: -I{} -r — find -L {} -maxdepth 1 -mindepth 1 -type f -executable -printf '%P\n' 2>/dev/null | sort -u | fzf
+# progs=$(echo $PATH | sed 's/\:/\n/g' | xargs -I{} find {} -xtype f -maxdepth 1)
+# echo $progs | sed 's/ /\n/g' | fzf
+
+prog=$(echo $PATH \
+	    | sed 's/\:/\n/g' \
+	    | xargs -I{} \
+		    find -L {} -maxdepth 1 -mindepth 1 \
+		    -type f -executable \
+		    -printf '%P\n' 2>/dev/null \
+ 	    | sort -u \
+	    | fuzzel -d)
+# echo $prog
+setsid -f $prog >/dev/null 2>&1
