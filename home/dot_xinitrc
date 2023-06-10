@@ -10,7 +10,7 @@ dwmblocks &
 (sleep 0.5 && alacritty --class Hometag -t Hometag -e tmux-home.sh) &
 # (amixer set Master 50% && mpv '/home/recur/.local/share/startupsounds/Microsoft_Windows_95_Startup_Sound_[miZHa7ZC6Z0].mp3') &
 
-if [ "$(tty)" = "/dev/tty1" ]; then
+if [ "$(tty)" = "/dev/tty2" ]; then
 	# while type dwm >/dev/null ; do dwm && continue || break ; done
 	while true; do
 		dwm >/dev/null 2>&1
