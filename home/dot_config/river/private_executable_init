@@ -43,6 +43,9 @@ do
 	# Waylock
 	riverctl map $mode $super+Control L spawn 'waylock -init-color 0x2e3440 -input-color 0x5e81ac -fail-color 0xbf616a'
 
+	# Pulsemixer
+	riverctl map $mode $super M spawn 'alacritty --class float -e pulsemixer'
+
 	# ncmpcpp
 	riverctl map $mode $super+Shift M spawn 'alacritty --class float -e ncmpcpp'
 	
