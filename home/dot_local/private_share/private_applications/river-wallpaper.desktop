@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=River Wallpaper Setter
+Terminal=false
+Exec=/usr/bin/alacritty --class float -e wayland-wallpaper-set

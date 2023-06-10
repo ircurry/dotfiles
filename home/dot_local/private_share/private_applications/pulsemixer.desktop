@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Pulsemixer
+Terminal=true
+Exec=/bin/pulsemixer
+MimeType=x-scheme-handler/gemini;
