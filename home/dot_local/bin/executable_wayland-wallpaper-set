@@ -1,0 +1,53 @@
+#!/bin/sh
+
+paper_file() {
+	if [ -d $XDG_CONFIG_HOME/river/wallpaper/ ]; then
+		ppr_file="$XDG_CONFIG_HOME/river/wallpaper/wallpaper"
+		ppr_dir="$XDG_CONFIG_HOME/river/wallpaper/"
+	elif [ -d $HOME/.config/river/wallpaper/ ]; then
+		ppr_file="$HOME/.config/river/wallpaper/wallpaper"
+		ppr_dir="$HOME/.config/river/wallpaper/"
+	else
+		ppr_file=""
+		ppr_dir=""
+	fi
+}
+
+sway_bg_on() {
+	if [ -e "$ppr_file" ]; then
+		setsid -f swaybg -i "$ppr_file" -m fill >/dev/null 2>&1
+	else
+		setsid -f swaybg -c "#3b4252" -m fill >/dev/null 2>&1
+	fi
+}
+
+set_wallpaper() {
+	if [ -d $HOME/pix/wall ]; then
+		ppr=$(find "$HOME/pix/wall/" | sort | fzf --preview='chafa {}' --preview-window=default:right:75%)
+		if [ -z "$ppr_dir" ]; then
+			echo "Error: Paper Dir does not exist"
+			exit 1
+		else
+			[ -e "$ppr_file" ] && rm "$ppr_file"
+			[ -n "$ppr" ] && ln -s "$ppr" "$ppr_file" >/dev/null 2>&1
+		fi
+	fi
+}
+
+kill_sway_bg() {
+	pkill swaybg
+}
+
+paper_file
+case $1 in
+	-c) [ -e "$ppr_file" ] && rm "$ppr_file"
+	    kill_sway_bg
+	    sway_bg_on ;;
+	-l) sway_bg_on ;;
+	-s) set_wallpaper ;;
+	*) set_wallpaper
+	   kill_sway_bg
+	   sway_bg_on ;;
+esac
+
+

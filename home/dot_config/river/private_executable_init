@@ -112,12 +112,13 @@ yambar-bar-controller-script -s
 wlr-randr --output eDP-1 --scale 2
 
 #wallpaper
-if [ -d "$HOME/pix/wall/" ]; then
-	wallppr=$(find "$HOME/pix/wall/" | grep "nord" | shuf -n1)
-	swaybg -i "$wallppr" -m fill &
-else
-	swaybg -c "#3b4252"
+wayland-wallpaper-set -l
+
+#spawn programs
+if [ -z $(pgrep emacs)]; then
+	setsid -f emacs --daemon &
 fi
+riverctl spawn mpd &
 
 #home
 nhome
