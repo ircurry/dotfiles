@@ -17,11 +17,14 @@ riverctl map normal $super+Shift C close
 # Exit
 riverctl map normal $hyper Q exit
 
-# fzf-run
+# fuzzel
 riverctl map normal $super R spawn fuzzel
 
+# fzf-run
+riverctl map normal $super P spawn fuzzel
+
 # Spawn emacs 
-riverctl map normal $super+Shift E spawn "emacsclient -c -a 'emacs'" && echo "pass" > ~/test.txt || echo "fail" > ~/test.txt
+riverctl map normal $super E spawn "emacsclient -c" 
 
 # Spawn browser
 riverctl map normal $super+Shift B spawn firefox-wayland
@@ -84,11 +87,14 @@ riverctl map docked $super+Shift C close
 # Exit
 riverctl map docked $hyper Q exit
 
+# fuzzel
+riverctl map docked $super R spawn fuzzel
+
 # fzf-run
-riverctl map docked $super R spawn dmenu-fzf-run
+riverctl map docked $super P spawn dmenu-fzf-run
 
 # Spawn emacs 
-riverctl map docked $super+Shift E spawn "emacsclient -c" 
+riverctl map docked $super E spawn "emacsclient -c" 
 
 # Spawn browser
 riverctl map docked $super+Shift B spawn firefox-wayland
