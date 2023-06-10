@@ -1,0 +1,303 @@
+hack: &hack Hack Nerd Font:size=18
+hackbig: &hackbig Hack Nerd Fond:size=20
+iosevka: &iosevka Iosevka Term:size=16
+iosevkabig: &iosevkabig Iosevka Term:size=18
+bg_select: &bg_select {stack: [{background: {color: 5E81ACff}}, {underline: {size: 2, color: 81A1C1ff}}]}
+bar:
+  height: 23 
+  location: top
+  font: *iosevka
+  spacing: 2
+  margin: 0
+  layer: bottom
+  foreground: D8DEE9ff
+  background: 2E3440ff
+
+  left:
+    - mpd:
+        host: localhost
+        port: 6600
+        content:
+          map:
+            conditions:
+              state == "offline":
+                string: 
+                  text: "" 
+              state == "stopped":
+                string: 
+                  text: "" 
+              state == "paused":
+                string: 
+                  text: "{artist} - {title}" 
+                  max: 25
+                  foreground: D8DEE9ff 
+                  right-margin: 8
+                  left-margin: 8
+                  deco: {stack: [{background: {color: 3B4252ff}}, {underline: {size: 2, color: 81A1C1ff}}]}
+              state == "playing":
+                string: 
+                  text: "{artist} - {title}" 
+                  max: 25
+                  foreground: 5E81ACff 
+                  right-margin: 8
+                  left-margin: 8
+                  deco: {stack: [{background: {color: 3B4252ff}}, {underline: {size: 2, color: 81A1C1ff}}]}
+    - river:
+        title:
+          map:
+            default:
+              string: 
+                text: "{title}" 
+                max: 35
+                foreground: 8FBCBBff
+                right-margin: 8
+                left-margin: 8 
+                deco: {stack: [{background: {color: 3B4252ff}}, {underline: {size: 2, color: 81A1C1ff}}]}
+            conditions:
+              title == "":
+                empty: {}
+
+        content: {empty: {}}
+
+  center:
+    - river:
+        anchors:
+          - base: &river_base
+              left-margin: 13
+              right-margin: 14
+              default: {string: {text: "."}}
+              conditions:
+                occupied:
+                  string: {text: "{id}"}
+
+        content:
+          map:
+            on-click: 
+              left: sh -c "riverctl set-focused-tags $((1 << ({id} - 1)))"
+              right: sh -c "riverctl toggle-focused-tags $((1 << ({id} -1)))"
+              middle: sh -c "riverctl toggle-view-tags $((1 << ({id} -1)))"
+            conditions:
+              state == urgent:
+                map:
+                  <<: *river_base
+                  deco: {background: {color: D08770ff}}
+              state == focused:
+                map:
+                  <<: *river_base
+                  deco: *bg_select
+              state == visible && ~occupied:
+                map:
+                  <<: *river_base
+              state == visible && occupied:
+                map:
+                  <<: *river_base
+                  deco: *bg_select
+              state == unfocused:
+                map:
+                  <<: *river_base
+              state == invisible && ~occupied: {empty: {}}
+              state == invisible && occupied:
+                map:
+                  <<: *river_base
+                    #deco: {underline: {size: 3, color: ea6962ff}}
+
+  right:
+    - battery:
+        name: BAT1
+        poll-interval: 15
+        content:
+          map:
+            default:
+              ramp:
+                tag: capacity
+                items:  
+                  - string: 
+                      text: "󰂃 {capacity}%" 
+                      font: *iosevkabig 
+                      foreground: BF616Aff 
+                      right-margin: 8 
+                      left-margin: 8 
+                      deco: {stack: [{background: {color: 3B4252ff}}, {underline: {size: 2, color: BF616Aff}}]}
+                  - string: 
+                      text: "󰁺 {capacity}%" 
+                      font: *iosevkabig 
+                      foreground: BF616Aff 
+                      right-margin: 8 
+                      left-margin: 8 
+                      deco: {stack: [{background: {color: 3B4252ff}}, {underline: {size: 2, color: BF616Aff}}]}
+                  - string: 
+                      text: "󰁻 {capacity}%" 
+                      font: *iosevkabig 
+                      foreground: BF616Aff 
+                      right-margin: 8 
+                      left-margin: 8 
+                      deco: {stack: [{background: {color: 3B4252ff}}, {underline: {size: 2, color: BF616Aff}}]}
+                  - string: 
+                      text: "󰁼 {capacity}%" 
+                      font: *iosevkabig 
+                      foreground: BF616Aff 
+                      right-margin: 8 
+                      left-margin: 8 
+                      deco: {stack: [{background: {color: 3B4252ff}}, {underline: {size: 2, color: BF616Aff}}]}
+                  - string: 
+                      text: "󰁽 {capacity}%" 
+                      font: *iosevkabig 
+                      foreground: BF616Aff 
+                      right-margin: 8 
+                      left-margin: 8 
+                      deco: {stack: [{background: {color: 3B4252ff}}, {underline: {size: 2, color: BF616Aff}}]}
+                  - string: 
+                      text: "󰁾 {capacity}%" 
+                      font: *iosevkabig 
+                      foreground: BF616Aff 
+                      right-margin: 8 
+                      left-margin: 8 
+                      deco: {stack: [{background: {color: 3B4252ff}}, {underline: {size: 2, color: BF616Aff}}]}
+                  - string: 
+                      text: "󰁿 {capacity}%" 
+                      font: *iosevkabig 
+                      foreground: BF616Aff 
+                      right-margin: 8 
+                      left-margin: 8 
+                      deco: {stack: [{background: {color: 3B4252ff}}, {underline: {size: 2, color: BF616Aff}}]}
+                  - string: 
+                      text: "󰂀 {capacity}%" 
+                      font: *iosevkabig 
+                      foreground: BF616Aff 
+                      right-margin: 8 
+                      left-margin: 8 
+                      deco: {stack: [{background: {color: 3B4252ff}}, {underline: {size: 2, color: BF616Aff}}]}
+                  - string: 
+                      text: "󰂁 {capacity}%" 
+                      font: *iosevkabig 
+                      foreground: BF616Aff 
+                      right-margin: 8 
+                      left-margin: 8 
+                      deco: {stack: [{background: {color: 3B4252ff}}, {underline: {size: 2, color: BF616Aff}}]}
+                  - string: 
+                      text: "󰂂 {capacity}%" 
+                      font: *iosevkabig 
+                      foreground: BF616Aff 
+                      right-margin: 8 
+                      left-margin: 8 
+                      deco: {stack: [{background: {color: 3B4252ff}}, {underline: {size: 2, color: BF616Aff}}]}
+                  - string: 
+                      text: "󰁹 {capacity}%" 
+                      font: *iosevkabig 
+                      foreground: BF616Aff 
+                      right-margin: 8 
+                      left-margin: 8 
+                      deco: {stack: [{background: {color: 3B4252ff}}, {underline: {size: 2, color: BF616Aff}}]}
+            conditions:
+              state == "charging":
+                string: 
+                  text: "󰂄 {capacity}%" 
+                  font: *iosevkabig 
+                  foreground: BF616Aff 
+                  right-margin: 8 
+                  left-margin: 8 
+                  deco: {stack: [{background: {color: 3B4252ff}}, {underline: {size: 2, color: BF616Aff}}]}
+              state == "unknown":
+                string: 
+                  text: "󰂑 {capacity}%" 
+                  font: *iosevkabig 
+                  foreground: BF616Aff 
+                  right-margin: 8 
+                  left-margin: 8 
+                  deco: {stack: [{background: {color: 3B4252ff}}, {underline: {size: 2, color: BF616Aff}}]}
+                  # 
+                  #- network:
+                  #    name: proton0
+                  #    content:
+                  #      map:
+                  #        default:
+                  #          string: 
+                  #            text: "" 
+                  #            font: *iosevkabig 
+                  #        conditions:
+                  #          state == "up":
+                  #            string: 
+                  #              text: "{ipv4}" 
+                  #              font: *iosevkabig 
+                  #              foreground: D08770ff 
+                  #              right-margin: 12 
+                  #              left-margin: 12 
+                  #              deco: {stack: [{background: {color: 3B4252ff}}, {underline: {size: 4, color: D08770ff}}]}
+                  #          state == "not present":
+                  #            string: 
+                  #              text: "balls" 
+                  #              font: *iosevkabig 
+                  #              foreground: D08770ff 
+                  #              right-margin: 12 
+                  #              left-margin: 12 
+                  #              deco: {stack: [{background: {color: 3B4252ff}}, {underline: {size: 4, color: D08770ff}}]}
+                  #          state == "unknown":
+                  #            string: 
+                  #              text: "unknown" 
+                  #              font: *iosevkabig 
+                  #              foreground: D08770ff 
+                  #              right-margin: 12 
+                  #              left-margin: 12 
+                  #              deco: {stack: [{background: {color: 3B4252ff}}, {underline: {size: 4, color: D08770ff}}]}
+    - script:
+        path: /home/recur/.config/yambar/scripts/vpn.sh
+        args: []
+        poll-interval: 3
+        content:
+          map: 
+            default: 
+              string: 
+                text: "{vpnip}"
+                font: *iosevkabig 
+                foreground: D08770ff 
+                right-margin: 8 
+                left-margin: 8 
+                deco: {stack: [{background: {color: 3B4252ff}}, {underline: {size: 2, color: D08770ff}}]}
+            conditions:
+              vpnip == "none":
+                string: {text: ""}
+
+
+
+    - network:
+        name: wlan0
+        content:
+          map:
+            default:
+              string: 
+                text: "󰤮" 
+                font: *iosevkabig 
+                foreground: B8DEE9ff 
+                right-margin: 8 
+                left-margin: 8 
+                deco: {stack: [{background: {color: 3B4252ff}}, {underline: {size: 2, color: EBCB8Bff}}]}
+            conditions:
+              state == "up":
+                string: 
+                  text: "󰤨" 
+                  font: *iosevkabig 
+                  foreground: EBCB8Bff 
+                  right-margin: 8 
+                  left-margin: 8
+                  deco: {stack: [{background: {color: 3B4252ff}}, {underline: {size: 2, color: EBCB8Bff}}]}
+    - mem:
+        interval: 30000
+        content:
+          string: 
+            text: "{used:gb}Gi" 
+            font: *iosevkabig 
+            foreground: A3BE8Cff 
+            right-margin: 8 
+            left-margin: 8 
+            deco: {stack: [{background: {color: 3B4252ff}}, {underline: {size: 2, color: A3BE8Cff}}]}
+    - clock:
+        time-format: "%H:%M"
+        date-format: "%m/%d (%a)"
+        content:
+          string: 
+            text: "{date} {time}" 
+            font: *iosevkabig 
+            foreground: 88C0D0ff 
+            right-margin: 8 
+            left-margin: 8 
+            deco: {stack: [{background: {color: 3B4252ff}}, {underline: {size: 2, color: 88C0D0ff}}]}
