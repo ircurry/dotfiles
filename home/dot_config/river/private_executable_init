@@ -48,6 +48,12 @@ do
 
 	# ncmpcpp
 	riverctl map $mode $super+Shift M spawn 'alacritty --class float -e ncmpcpp'
+
+	# Screenshots with grim/slurp
+	riverctl map $mode $super S spawn 'grim - | tee $HOME/pix/ss/$(date +%Y%m%d-%s)-screenshot.png | wl-copy'
+
+	# Screenshot Regions with grim/slurp
+	riverctl map $mode $super+Shift S spawn 'grim -g "$(slurp)" - | tee $HOME/pix/ss/$(date +%Y%m%d-%s)-screenshot.png | wl-copy'
 	
 	# Mod+J and Mod+K to focus the next/previous view in the layout stack
 	riverctl map $mode $super J focus-view next
