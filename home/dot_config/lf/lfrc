@@ -1,3 +1,176 @@
+## Basic settings
+set previewer ~/.config/lf/scope
+set preview true
+
+## Custom Commands
+cmd open ${{
+  case $(file --mime-type "$f" -bL) in
+    application/pdf|application/vnd.djvu|application/epub*) setsid -f zathura "$fx" >/dev/null 2>&1 ;;
+    # Subject to change with emacs 29.1
+    text/*|application/json|inode/x-empty|application/x-subrip) vim "$f" ;;
+    image/x-xcf) setsid -f gimp "$f" >/dev/null 2>&1 ;;
+    image/svg+xml) display -- "$f" ;;
+    image/*) setsid -f imv "$f" >/dev/null 2>&1 ;;
+    audio/*|video/x-ms-asf) mpv --audio-display=no "$f" ;;
+    video/*) setsid -f mpv "$f" -quiet >/dev/null 2>&1 ;;
+    *) xdg-open "$f" ;;
+  esac
+}}
+
 cmd mkdir $mkdir -p "$(echo $* | tr ' ' '\ ')"
+
+# cmd mkdir ${{
+#   printf "Directory Name: "
+#   read ans
+#   mkdir $ans
+# }}
+
+#cmd mkfile ${{
+#  printf "File Name: "
+#  read ans
+#  $EDITOR $ans
+#}}
+
+cmd chmod ${{
+  printf "Mode Bits: "
+  read ans
+
+  for file in "$fx"
+  do
+    chmod $ans $file
+  done
+
+  lf -remote 'send reload'
+}}
+
+cmd trash ${{
+  files=$(printf "$fx" | tr '\n' ';')
+  while [ "$files" ]; do
+    # extract the substring from start of string up to delimiter.
+    # this is the first "element" of the string.
+    file=${files%%;*}
+
+    trash-put "$(basename "$file")"
+    # if there's only one element left, set `files` to an empty string.
+    # this causes us to exit this `while` loop.
+    # else, we delete the first "element" of the string from files, and move onto the next.
+    if [ "$files" = "$file" ]; then
+      files=''
+    else
+      files="${files#*;}"
+    fi
+  done
+}}
+
+# Archiving Functions
+cmd unarchive ${{
+  case "$f" in
+      *.zip) unzip "$f" ;;
+      *.tar.gz) tar -xzvf "$f" ;;
+      *.tar.bz2) tar -xjvf "$f" ;;
+      *.tar) tar -xvf "$f" ;;
+      *) echo "Unsupported format" ;;
+  esac
+}}
+
+cmd zip ${{
+    if [ -z "$fs" ]; then
+         zip -r "$(basename $f).zip" "$(basename $f)"
+    else
+            for file in $fx
+	    do
+		    zip -r "$(basename $file).zip" "$(basename $file)"
+	    done
+		    
+    fi
+}}  
+
+cmd tar ${{
+    if [ -z "$fs" ]; then
+         tar -cvf "$(basename $f).tar" "$(basename $f)"
+    else
+            for file in $fx
+	    do
+		    tar -cvf "$(basename $file).tar" "$(basename $file)"
+	    done
+		    
+    fi
+}}  
+
+cmd targz ${{
+    if [ -z "$fs" ]; then
+         tar -cvzf "$(basename $f).tar.gz" "$(basename $f)"
+    else
+            for file in $fx
+	    do
+		    tar -cvzf "$(basename $file).tar.gz" "$(basename $file)"
+	    done
+		    
+    fi
+}}  
+
+cmd tarbz2 ${{
+    if [ -z "$fs" ]; then
+         tar -cvjf "$(basename $f).tar.bz2" "$(basename $f)"
+    else
+            for file in $fx
+	    do
+		    tar -cvjf "$(basename $file).tar.bz2" "$(basename $file)"
+	    done
+		    
+    fi
+}}  
+
+cmd givedate %{{
+  printf "Add Date? [y]es [N]o: "
+  read ans
+  case "$ans" in
+    y|yes|Y|Yes)
+      if [ -z "$fs" ]; then
+           mv "$(basename $f)" "$(date +%Y-%m-%d)--$(basename $f)"
+      else
+           for file in $fx
+           do
+              mv "$(basename $file)" "$(date +%Y-%m-%d)--$(basename $file)"
+           done
+      fi
+      ;;
+    *) echo "$ans: No date added" ;;
+  esac
+}}  
+
+## Mappings
+# Unmap bad kbds
+map m
+map o
+map d
+map "'"
+map '"'
+map e
+map c
+map f
+
+# Actual Bindings
+map . set hidden!
+map DD delete
+map dd trash
+map p paste
+map x cut
+map y copy
+map <enter> open
+#map mf mkfile
+map md push :mkdir<space>
+map ch chmod
+map R reload
+map C clear
+map U unselect
+
+# Archiving
+map az zip
+map at tar
+map ag targz
+map ab tarbz2
+map au unarchive
+map ad givedate
 
 map <c-n> push :mkdir<space>
