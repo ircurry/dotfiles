@@ -70,10 +70,10 @@ do
 	# Mod+Space to toggle floating window
 	riverctl map $mode $super Space toggle-float
 	riverctl map $mode $super+Shift F toggle-float
-	riverctl map $mode $super+Shift H move left 20
-	riverctl map $mode $super+Shift L move right 20
-	riverctl map $mode $super+Shift J move down 20
-	riverctl map $mode $super+Shift K move up 20
+	riverctl map -repeat $mode $super+Shift H move left 20
+	riverctl map -repeat $mode $super+Shift L move right 20
+	riverctl map -repeat $mode $super+Shift J move down 20
+	riverctl map -repeat $mode $super+Shift K move up 20
 
 	# Mod+F to toggle fullscreen
 	riverctl map $mode $super F toggle-fullscreen
