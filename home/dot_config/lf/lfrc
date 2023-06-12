@@ -43,6 +43,8 @@ cmd chmod ${{
   lf -remote 'send reload'
 }}
 
+cmd opendirimages $setsid -f imv -r "$PWD" >/dev/null 2>&1
+
 cmd trash ${{
   files=$(printf "$fx" | tr '\n' ';')
   while [ "$files" ]; do
@@ -164,6 +166,7 @@ map ch chmod
 map R reload
 map C clear
 map U unselect
+map I opendirimages
 
 # Archiving
 map az zip
