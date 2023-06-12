@@ -470,7 +470,7 @@ def_key "U"
 def_key "s"
   reset_search_engine
 def_key "s"
-  show_search_engine
+  stop
 def_key "f"
   show_browser
 def_key "f"
