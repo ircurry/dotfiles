@@ -31,19 +31,66 @@ cmd mkdir $mkdir -p "$(echo $* | tr ' ' '\ ')"
 #  $EDITOR $ans
 #}}
 
+cmd mkscript %{{
+    printf "Name of script: "
+    read ans
+    touch "$ans" && chmod +x "$ans" && echo "done"
+}}
+
 cmd chmod ${{
   printf "Mode Bits: "
   read ans
 
-  for file in "$fx"
+  for file in $fx
   do
-    chmod $ans $file
+    chmod "$ans" "$file"
   done
 
   lf -remote 'send reload'
 }}
 
+cmd addtochez %{{
+  printf "Add files to Chezmoi? [y]es [N]o: "
+  read ans
+  case "$ans" in
+    y|Y|yes|Yes)
+      for file in $fx
+      do
+        chezmoi add "$file"
+      done
+      echo "files added to chezmoi";;
+    *) echo "no files added" ;;
+  esac
+}}
+
+cmd forgetfromchez ${{
+  #printf "Chezmoi forget these files? [y]es [N]o: "
+  #read ans
+  #echo "$ans"
+
+  #case "$ans" in
+  #  y|Y|yes|Yes)
+  #    for file in "$fx"
+  #    do
+  #      chezmoi forget "$file" 
+  #    done
+  #    echo "files forgotten from chezmoi";;
+  #  *) echo "no files forgotten; aborted" ;;
+  #esac
+  for file in $fx
+  do
+    chezmoi forget "$file" 
+  done
+}}
+
+cmd applychez %chezmoi apply && echo "applied"
+
 cmd opendirimages $setsid -f imv -r "$PWD" >/dev/null 2>&1
+
+cmd zoxidecd ${{
+   dirtocd="$(zoxide query --interactive "$1")"
+   lf -remote "send $id cd \"$dirtocd\""
+}}
 
 cmd trash ${{
   files=$(printf "$fx" | tr '\n' ';')
@@ -160,9 +207,18 @@ map p paste
 map x cut
 map y copy
 map <enter> open
+map z zoxidecd
+
 #map mf mkfile
 map md push :mkdir<space>
+map ms mkscript
+
 map ch chmod
+map ca applychez
+map cA addtochez
+map cF forgetfromchez
+map cD $chezmoi diff | bat --theme Nord --paging=always
+
 map R reload
 map C clear
 map U unselect
