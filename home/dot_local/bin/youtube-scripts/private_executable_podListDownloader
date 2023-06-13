@@ -13,7 +13,7 @@ esac
 cat $file | xargs -I{} yt-dlp --embed-metadata \
 		  -x --audio-format mp3 \
 		  -f bestaudio/best -o "%(uploader)s--%(title)s--%(id)s.%(ext)s" \
-		  -P $HOME/dox/audio/pod {}
+		  -P $HOME/dox/media/audio/pod {}
 read -p "Do you want to delete the list? " yn
 case $yn in
 	y|yes) rm $file ;;
