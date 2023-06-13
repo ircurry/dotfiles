@@ -219,6 +219,8 @@ map cA addtochez
 map cF forgetfromchez
 map cD $chezmoi diff | bat --theme Nord --paging=always
 
+map <c-n> $newsboat
+
 map R reload
 map C clear
 map U unselect
@@ -232,4 +234,3 @@ map ab tarbz2
 map au unarchive
 map ad givedate
 
-map <c-n> push :mkdir<space>
