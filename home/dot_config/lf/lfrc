@@ -92,6 +92,10 @@ cmd zoxidecd ${{
    lf -remote "send $id cd \"$dirtocd\""
 }}
 
+cmd zoxideadd %{{
+    zoxide add "$f" && echo "Directory added to zoxide" || echo "Error: Failed to add directory"
+}}
+
 cmd trash ${{
   files=$(printf "$fx" | tr '\n' ';')
   while [ "$files" ]; do
@@ -207,7 +211,9 @@ map p paste
 map x cut
 map y copy
 map <enter> open
+
 map z zoxidecd
+map ZA zoxideadd
 
 #map mf mkfile
 map md push :mkdir<space>
