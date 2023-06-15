@@ -1,0 +1,36 @@
+#!/bin/sh
+
+get_icon() {
+	if [ "$MUTED" = "true" ]; then
+		ICON="audio-volume-muted-symbolic"
+	elif [ "$VOLUME" -eq 0 ]; then
+		ICON="audio-volume-muted-symbolic"
+	elif [ "$VOLUME" -le 33 ] && [ "$VOLUME" -gt 0 ]; then
+		ICON="audio-volume-low-symbolic"
+	elif [ "$VOLUME" -gt 33 ] && [ "$VOLUME" -le 67 ]; then
+		ICON="audio-volume-medium-symbolic"
+	else
+		ICON="audio-volume-high-symbolic"
+	fi
+}
+
+case $1 in
+	i)
+		pamixer -i 2
+		MUTED="$(pamixer --get-mute)"
+		VOLUME="$(pamixer --get-volume)"
+		get_icon
+		dunstify -u low "Volume: ${VOLUME}%" -h int:value:"$VOLUME" -h string:fgcolor:#a3be8c -i "$ICON" -r 9993 -t 2000;;
+	d) 
+		pamixer -d 2
+		MUTED="$(pamixer --get-mute)"
+		VOLUME="$(pamixer --get-volume)"
+		get_icon
+		dunstify -u low "Volume: ${VOLUME}%" -h int:value:"$VOLUME" -h string:fgcolor:#ebcb8b -i "$ICON" -r 9993 -t 2000;;
+	*) 
+		pamixer -t 2
+		MUTED="$(pamixer --get-mute)"
+		VOLUME="$(pamixer --get-volume)"
+		get_icon
+		dunstify -u low "Volume: ${VOLUME}%" -h int:value:"$VOLUME" -h string:fgcolor:#8fbcbb -i "$ICON" -r 9993 -t 2000;;
+esac
