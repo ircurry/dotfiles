@@ -138,6 +138,18 @@ cmd zip ${{
     fi
 }}  
 
+cmd tarzstd ${{
+    if [ -z "$fs" ]; then
+         tar -c -I"zstd -19 -T0" -f "$(basename $f).tar.zst" "$(basename $f)"
+    else
+            for file in $fx
+	    do
+		    tar -c -I"zstd -19 -T0" -f "$(basename $file).tar.zst" "$(basename $file)"
+	    done
+		    
+    fi
+}}  
+
 cmd tar ${{
     if [ -z "$fs" ]; then
          tar -cvf "$(basename $f).tar" "$(basename $f)"
@@ -164,11 +176,13 @@ cmd targz ${{
 
 cmd tarbz2 ${{
     if [ -z "$fs" ]; then
-         tar -cvjf "$(basename $f).tar.bz2" "$(basename $f)"
+         # tar -cvjf "$(basename $f).tar.bz2" "$(basename $f)"
+         tar -c -v -I"pbzip2" -f "$(basename $f).tar.bz2" "$(basename $f)"
     else
             for file in $fx
 	    do
-		    tar -cvjf "$(basename $file).tar.bz2" "$(basename $file)"
+		    # tar -cvjf "$(basename $file).tar.bz2" "$(basename $file)"
+		    tar -c -v -I"pbzip2" -f "$(basename $file).tar.bz2" "$(basename $file)"
 	    done
 		    
     fi
@@ -233,7 +247,8 @@ map U unselect
 map I opendirimages
 
 # Archiving
-map az zip
+map aZ zip
+map az tarzstd
 map at tar
 map ag targz
 map ab tarbz2
