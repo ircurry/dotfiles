@@ -120,7 +120,12 @@ yambar-bar-controller-script -s
 #wlr-rander
 wlr-randr --output eDP-1 --scale 2
 
-#wallpaper
+#wallpaper and colors
+riverctl background-color 0x3b4252
+riverctl border-color-focused 0x88c0d0
+riverctl border-color-unfocused 0x4c566a
+riverctl border-color-urgent 0xd08770
+
 wayland-wallpaper-set -l
 
 #spawn programs
