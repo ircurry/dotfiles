@@ -17,7 +17,7 @@ sway_bg_on() {
 	if [ -e "$ppr_file" ]; then
 		setsid -f swaybg -i "$ppr_file" -m fill >/dev/null 2>&1
 	else
-		setsid -f swaybg -c "#3b4252" -m fill >/dev/null 2>&1
+		setsid -f swaybg -c "#3b4252" -m solid_color >/dev/null 2>&1
 	fi
 }
 
@@ -33,7 +33,6 @@ set_wallpaper() {
 		fi
 	fi
 }
-
 kill_sway_bg() {
 	pkill swaybg
 }
