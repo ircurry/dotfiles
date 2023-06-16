@@ -44,13 +44,16 @@ do
 	riverctl map $mode $super+Control L spawn 'waylock -init-color 0x2e3440 -input-color 0x5e81ac -fail-color 0xbf616a'
 	
 	# Pulsemixer
-	riverctl map $mode $super M spawn 'alacritty --class float -e pulsemixer'
+	riverctl map $mode $super+Shift M spawn 'alacritty --class float -e pulsemixer'
 
 	# ncmpcpp
-	riverctl map $mode $super+Shift M spawn 'alacritty --class float -e ncmpcpp'
+	riverctl map $mode $super M spawn 'alacritty --class float -e ncmpcpp'
 
 	# top/btm
 	riverctl map $mode $super+Shift T spawn 'alacritty --class float -e btm'
+
+	# Pomodoro Timer
+	riverctl map $mode $super T spawn 'alacritty --class float -e pomodoro.sh'
 
 	# Screenshots with grim/slurp
 	riverctl map $mode $super S spawn 'grim - | tee $HOME/pix/ss/$(date +%Y%m%d-%s)-screenshot.png | wl-copy'
