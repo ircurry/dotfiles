@@ -29,7 +29,7 @@ bar:
               state == "paused":
                 string: 
                   text: "{artist} - {title}" 
-                  max: 25
+                  max: 20
                   foreground: D8DEE9ff 
                   right-margin: 12 
                   left-margin: 12 
@@ -37,7 +37,7 @@ bar:
               state == "playing":
                 string: 
                   text: "{artist} - {title}" 
-                  max: 25
+                  max: 20
                   foreground: 5E81ACff 
                   right-margin: 12 
                   left-margin: 12 
