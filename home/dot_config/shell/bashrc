@@ -40,7 +40,7 @@ lr() {
 
 rw() {
 	dir=$PWD
-	cd $HOME/proj/code/rustlings && rustlings watch && cd $dir 
+	cd $HOME/dox/code/rustlings && rustlings watch && cd $dir 
 }
 
 rand6() {
