@@ -55,6 +55,9 @@ do
 	# Pomodoro Timer
 	riverctl map $mode $super T spawn 'alacritty --class float -e pomodoro.sh'
 
+	# Calcurse
+	riverctl map $mode $super A spawn 'alacritty --class float -e calcurse'
+
 	# Screenshots with grim/slurp
 	riverctl map $mode $super S spawn 'grim - | tee $HOME/pix/ss/$(date +%Y%m%d-%s)-screenshot.png | wl-copy'
 
@@ -147,4 +150,4 @@ riverctl spawn mpd &
 pkill dunst && riverctl spawn dunst &
 
 #home
-riverctl spawn nhome
+#riverctl spawn nhome
