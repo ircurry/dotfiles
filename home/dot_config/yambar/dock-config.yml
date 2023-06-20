@@ -14,11 +14,28 @@ bar:
   background: 2E3440ff
 
   left:
+    - script:
+        path: /home/recur/.config/yambar/scripts/launcher.sh
+        args: []
+        content:
+          string: 
+            text: "󱓞"
+            font: *iosevkabig 
+            foreground: b48eadff 
+            right-margin: 8 
+            left-margin: 8
+            deco: {stack: [{background: {color: 3B4252ff}}, {underline: {size: 4, color: b48eadff}}]}
+            on-click: 
+              left: sh -c "fuzzel"
+              right: sh -c "fuzzel-run"
+              middle: sh -c "alacritty --class float -e lf"
     - mpd:
         host: localhost
         port: 6600
         content:
           map:
+            on-click:
+              left: sh -c "alacritty --class float -e ncmpcpp"
             conditions:
               state == "offline":
                 string: 

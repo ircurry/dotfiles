@@ -14,11 +14,29 @@ bar:
   background: 2E3440ff
 
   left:
+    - script:
+        path: /home/recur/.config/yambar/scripts/launcher.sh
+        args: []
+        content:
+          string: 
+            text: "󱓞"
+            font: *iosevkabig 
+            foreground: b48eadff 
+            right-margin: 12 
+            left-margin: 12 
+            deco: {stack: [{background: {color: 3B4252ff}}, {underline: {size: 4, color: b48eadff}}]}
+            on-click: 
+              left: sh -c "fuzzel"
+              right: sh -c "fuzzel-run"
+              middle: sh -c "alacritty --class float -e lf"
+
     - mpd:
         host: localhost
         port: 6600
         content:
           map:
+            on-click:
+              left: sh -c "alacritty --class float -e ncmpcpp"
             conditions:
               state == "offline":
                 string: 
@@ -29,7 +47,7 @@ bar:
               state == "paused":
                 string: 
                   text: "{artist} - {title}" 
-                  max: 20
+                  max: 19
                   foreground: D8DEE9ff 
                   right-margin: 12 
                   left-margin: 12 
@@ -37,7 +55,7 @@ bar:
               state == "playing":
                 string: 
                   text: "{artist} - {title}" 
-                  max: 20
+                  max: 19
                   foreground: 5E81ACff 
                   right-margin: 12 
                   left-margin: 12 
@@ -48,7 +66,7 @@ bar:
             default:
               string: 
                 text: "{title}" 
-                max: 25
+                max: 24
                 foreground: 8FBCBBff
                 right-margin: 12 
                 left-margin: 12 
@@ -301,3 +319,4 @@ bar:
             right-margin: 12 
             left-margin: 12 
             deco: {stack: [{background: {color: 3B4252ff}}, {underline: {size: 4, color: 88C0D0ff}}]}
+
