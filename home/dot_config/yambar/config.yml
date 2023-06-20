@@ -3,6 +3,23 @@ hackbig: &hackbig Hack Nerd Fond:size=20
 iosevka: &iosevka Iosevka Term:size=26
 iosevkabig: &iosevkabig Iosevka Term:size=28
 bg_select: &bg_select {stack: [{background: {color: 5E81ACff}}, {underline: {size: 4, color: 81A1C1ff}}]}
+
+launcher: &launcher
+  foreground: b48eadff 
+  content:
+    string: 
+      text: "󱓞"
+      font: *iosevkabig 
+      right-margin: 9
+      left-margin: 11 
+      # deco: {background: {color: D08770ff}}
+      deco: {stack: [{background: {color: 2e3440ff}}]} #, {underline: {size: 4, color: b48eadff}}]}
+      on-click: 
+        left: sh -c "fuzzel"
+        right: sh -c "fuzzel-run"
+        middle: sh -c "alacritty --class float -e lf"
+
+
 bar:
   height: 40
   location: top
@@ -14,21 +31,6 @@ bar:
   background: 2E3440ff
 
   left:
-    - script:
-        path: /home/recur/.config/yambar/scripts/launcher.sh
-        args: []
-        content:
-          string: 
-            text: "󱓞"
-            font: *iosevkabig 
-            foreground: b48eadff 
-            right-margin: 12 
-            left-margin: 12 
-            deco: {stack: [{background: {color: 3B4252ff}}, {underline: {size: 4, color: b48eadff}}]}
-            on-click: 
-              left: sh -c "fuzzel"
-              right: sh -c "fuzzel-run"
-              middle: sh -c "alacritty --class float -e lf"
 
     - mpd:
         host: localhost
@@ -78,6 +80,7 @@ bar:
         content: {empty: {}}
 
   center:
+    - label: *launcher
     - river:
         anchors:
           - base: &river_base
