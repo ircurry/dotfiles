@@ -251,7 +251,7 @@ bar:
           map: 
             default: 
               string: 
-                text: "{vpnip}"
+                text: " {vpnip}"
                 font: *iosevkabig 
                 foreground: D08770ff 
                 right-margin: 12 
@@ -259,7 +259,14 @@ bar:
                 deco: {stack: [{background: {color: 3B4252ff}}, {underline: {size: 4, color: D08770ff}}]}
             conditions:
               vpnip == "none":
-                string: {text: ""}
+                # string: {text: ""}
+                string: 
+                  text: " Discon."
+                  font: *iosevkabig 
+                  foreground: D08770ff 
+                  right-margin: 12 
+                  left-margin: 12 
+                  deco: {stack: [{background: {color: 3B4252ff}}, {underline: {size: 4, color: D08770ff}}]}
 
 
 
