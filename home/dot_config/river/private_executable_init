@@ -118,6 +118,7 @@ done
 
 # Make certain views start floating
 riverctl float-filter-add app-id float
+riverctl float-filter-add app-id "org.pwmt.zathura"
 riverctl float-filter-add title "Firefox - Choose User Profile"
 
 #default layouts
