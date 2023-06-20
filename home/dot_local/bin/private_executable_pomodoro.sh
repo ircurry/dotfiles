@@ -2,6 +2,7 @@
 
 work_timer() {
 	SECONDS=0
+	# 25 mins
 	while [ ! $SECONDS = 1500 ]; do
 		sleep 1
 		SECONDS=$(($SECONDS + 1))
@@ -15,6 +16,7 @@ work_timer() {
 
 short_break_timer() {
 	SECONDS=0
+	# 5 mins
 	while [ ! $SECONDS = 300 ]; do
 		sleep 1
 		SECONDS=$(($SECONDS + 1))
@@ -28,6 +30,7 @@ short_break_timer() {
 
 long_break_timer() {
 	SECONDS=0
+	# 15 mins
 	while [ ! $SECONDS = 900 ]; do
 		sleep 1
 		SECONDS=$(($SECONDS + 1))
