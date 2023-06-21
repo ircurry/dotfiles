@@ -35,7 +35,7 @@ export GOPATH="$HOME/.local/bin/go/"
 
 # Other options
 export EDITOR="vim"
-export BROWSER="firefox"
+export BROWSER="firefox-wayland"
 export FILEMANAGER="pcmanfm"
 export TERMINAL="alacritty"
 export XKB_DEFAULT_LAYOUT="us"
