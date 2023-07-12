@@ -1,3 +1,6 @@
+##############
+## NEWSBOAT ##
+##############
 external-url-viewer "rdrview -B surf '{}'"
 # browser "url=$(cv-url '%u') ; setsid -f firefox-wayland --new-tab $url >/dev/null 2>&1"
 browser "linkhandler '%u'"
@@ -39,3 +42,8 @@ macro r set browser "rdrview -B surf '%u'" ; open-in-browser-and-mark-read ; set
 macro R set browser "url=$(echo '%u' | sed s/www\.reddit\.com/libreddit\.kavin\.rocks/g) ; setsid -f firefox-wayland --new-tab $url >/dev/null 2>&1" ; open-in-browser-and-mark-read ; set browser "linkhandler '%u'"
 macro c set browser "echo %u | xclip -r -sel c" ; open-in-browser ; set browser "linkhandler '%u'"
 macro b set browser "setsid -f firefox-wayland --new-tab '%u' >/dev/null 2>&1" ; open-in-browser ; set browser "linkhandler '%u'"
+
+#############
+## PODBOAT ##
+#############
+player "mpv --no-video"
