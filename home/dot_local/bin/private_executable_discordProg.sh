@@ -1,3 +1,3 @@
 #!/bin/bash
 
-firefox -no-remote -P discord
+firefox-wayland -no-remote -P discord
