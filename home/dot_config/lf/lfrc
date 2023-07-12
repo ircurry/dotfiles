@@ -10,11 +10,15 @@ cmd open ${{
     text/*|application/json|inode/x-empty|application/x-subrip) vim "$f" ;;
     image/x-xcf) setsid -f gimp "$f" >/dev/null 2>&1 ;;
     image/svg+xml) display -- "$f" ;;
-    image/*) setsid -f imv "$f" >/dev/null 2>&1 ;;
+    image/*) setsid -f imv-dir "$f" >/dev/null 2>&1 ;;
     audio/*|video/x-ms-asf) mpv --audio-display=no "$f" ;;
     video/*) setsid -f mpv "$f" -quiet >/dev/null 2>&1 ;;
     *) xdg-open "$f" ;;
   esac
+}}
+
+cmd browser-open ${{
+    setsid -f firefox-wayland "$f" >/dev/null 2>&1
 }}
 
 cmd mkdir $mkdir -p "$(echo $* | tr ' ' '\ ')"
@@ -85,7 +89,7 @@ cmd forgetfromchez ${{
 
 cmd applychez %chezmoi apply && echo "applied"
 
-cmd opendirimages $setsid -f imv -r "$PWD" >/dev/null 2>&1
+cmd opendirimages $setsid -f imv "$f" >/dev/null 2>&1
 
 cmd zoxidecd ${{
    dirtocd="$(zoxide query --interactive "$1")"
@@ -225,6 +229,7 @@ map p paste
 map x cut
 map y copy
 map <enter> open
+map B browser-open
 
 map z zoxidecd
 map ZA zoxideadd
